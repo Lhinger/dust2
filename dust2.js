@@ -175,7 +175,9 @@ window.GameLoad = gameLoad;
 
 function gameLoad(a) {
     if (5 < a.length) {
-        for (var c = 0, b = 0; b < a.length - 1; b++) c += a.charCodeAt(b) * ((b & 15) + 1);
+        for (var c = 0, b = 0; b < a.length - 1; b++) {
+            c += a.charCodeAt(b) * ((b & 15) + 1);
+        }
         if ((c & 63) != arrayComOsOffsetsDosChars[a.charCodeAt(a.length - 1)]) return -1;
         Zc = a.substring(0, a.length - 1);
         return 0
@@ -218,7 +220,7 @@ function saveGameFromScreen() {
     for (a = Ya + 277760 + 7E3 - 1; 0 <= a; a--) arrayOfTypesOfElementInThisPosition[a] = 0;
     for (b = 0; 280 > b; b++)
         for (c = 0; 496 > c; c++) d = ((b >> 2) + 2) * w + (c >> 2) + 2, e = Ya + 496 * b + c, 0 != x[d] && (x[d] == Gb ? arrayOfTypesOfElementInThisPosition[e] = Ob : x[d] == Hb ? arrayOfTypesOfElementInThisPosition[e] = Qb : x[d] == Ib && (arrayOfTypesOfElementInThisPosition[e] = Rb));
-    for (a = 0; a < gd; a++) d = a * hd, c = ~~y[d + 4].x - 8, b = ~~y[d + 4].y - 8, 0 > c || 496 <= c ? id(a--) : 0 > b || 280 <= b ? id(a--) : (c = c >> 2 << 2, b = b >> 2 << 2, e = Ya + 496 * b + c, 0 != arrayOfTypesOfElementInThisPosition[e] ? id(a--) : z[a] == jd ? (arrayOfTypesOfElementInThisPosition[e] = Ec, arrayOfTypesOfElementInThisPosition[e + 138880] = kd[a]) : z[a] == ld ? (arrayOfTypesOfElementInThisPosition[e] = Fc, arrayOfTypesOfElementInThisPosition[e + 138880] = kd[a]) : z[a] == md ? (arrayOfTypesOfElementInThisPosition[e] = fighterId, arrayOfTypesOfElementInThisPosition[e + 138880] = 0) : z[a] == md + 1 ? (arrayOfTypesOfElementInThisPosition[e] = fighterId, arrayOfTypesOfElementInThisPosition[e + 138880] = 0) : z[a] == nd ? (arrayOfTypesOfElementInThisPosition[e] =
+    for (a = 0; a < counterStickman; a++) d = a * hd, c = ~~stickManBodyPoints[d + 4].x - 8, b = ~~stickManBodyPoints[d + 4].y - 8, 0 > c || 496 <= c ? id(a--) : 0 > b || 280 <= b ? id(a--) : (c = c >> 2 << 2, b = b >> 2 << 2, e = Ya + 496 * b + c, 0 != arrayOfTypesOfElementInThisPosition[e] ? id(a--) : z[a] == jd ? (arrayOfTypesOfElementInThisPosition[e] = Ec, arrayOfTypesOfElementInThisPosition[e + 138880] = kd[a]) : z[a] == ld ? (arrayOfTypesOfElementInThisPosition[e] = Fc, arrayOfTypesOfElementInThisPosition[e + 138880] = kd[a]) : z[a] == md ? (arrayOfTypesOfElementInThisPosition[e] = fighterId, arrayOfTypesOfElementInThisPosition[e + 138880] = 0) : z[a] == md + 1 ? (arrayOfTypesOfElementInThisPosition[e] = fighterId, arrayOfTypesOfElementInThisPosition[e + 138880] = 0) : z[a] == nd ? (arrayOfTypesOfElementInThisPosition[e] =
         cloneId, arrayOfTypesOfElementInThisPosition[e + 138880] = 0) : id(a--));
     for (a = 0; a < od; a++) 0 != A[a] && (c = ~~B[a].x - 8, b = ~~B[a].y - 8, 0 > c || 496 <= c ? pd(a) : 0 > b || 280 <= b ? pd(a) : (e = Ya + 496 * b + c, 0 != arrayOfTypesOfElementInThisPosition[e] ? pd(a) : (arrayOfTypesOfElementInThisPosition[e] = Hc, arrayOfTypesOfElementInThisPosition[e + 138880] = A[a])));
     for (a = p; a < qd; a++) c = ~~C[a].x - 8, b = ~~C[a].y - 8, 0 > c || 496 <= c ? rd(a--) : 0 > b || 280 <= b ? rd(a--) : D[a] == hc && E[a] != s[hc] ? rd(a--) : (e = Ya + 496 * b + c, 0 != arrayOfTypesOfElementInThisPosition[e] ? rd(a--) : (arrayOfTypesOfElementInThisPosition[e] = D[a], D[a] == Nb ? arrayOfTypesOfElementInThisPosition[e + 138880] = G[a] : D[a] == ac ? arrayOfTypesOfElementInThisPosition[e + 138880] = G[a] & 255 : D[a] == Lc && (arrayOfTypesOfElementInThisPosition[e + 138880] = G[a] & 1)));
@@ -227,8 +229,8 @@ function saveGameFromScreen() {
     for (e = Ya + 138880; d < e; d++)
         if (arrayOfTypesOfElementInThisPosition[d] == Nb || arrayOfTypesOfElementInThisPosition[d] == ac || arrayOfTypesOfElementInThisPosition[d] == Ec || arrayOfTypesOfElementInThisPosition[d] == Fc ||
             arrayOfTypesOfElementInThisPosition[d] == fighterId || arrayOfTypesOfElementInThisPosition[d] == Hc || arrayOfTypesOfElementInThisPosition[d] == cloneId || arrayOfTypesOfElementInThisPosition[d] == Lc) arrayOfTypesOfElementInThisPosition[Za++] = arrayOfTypesOfElementInThisPosition[d + 138880];
-    for (a = 0; a < sd; a++) arrayOfTypesOfElementInThisPosition[Za] = td[a], 0 == ud[a] ? (arrayOfTypesOfElementInThisPosition[Za + 1 * sd] = H[vd[a]] >> 16 & 255, arrayOfTypesOfElementInThisPosition[Za + 2 * sd] = H[vd[a]] >> 8 & 255, arrayOfTypesOfElementInThisPosition[Za + 3 * sd] = H[vd[a]] & 255) : 1 == ud[a] ? (c = ~~y[vd[a] * hd + 4].x, b = ~~y[vd[a] * hd + 4].y, c = c >> 2 << 2, b = b >> 2 << 2, e = 0 + 512 * b + c, arrayOfTypesOfElementInThisPosition[Za + 1 * sd] = e >> 16 & 255, arrayOfTypesOfElementInThisPosition[Za + 2 * sd] = e >> 8 & 255, arrayOfTypesOfElementInThisPosition[Za + 3 * sd] = e & 255) : 2 == ud[a] && (c = ~~B[vd[a]].x, b = ~~B[vd[a]].y, e = 0 + 512 * b + c, arrayOfTypesOfElementInThisPosition[Za + 1 * sd] = e >> 16 & 255, arrayOfTypesOfElementInThisPosition[Za + 2 * sd] = e >> 8 & 255, arrayOfTypesOfElementInThisPosition[Za + 3 * sd] = e & 255), 0 == wd[a] ? (arrayOfTypesOfElementInThisPosition[Za + 4 * sd] = H[xd[a]] >> 16 & 255, arrayOfTypesOfElementInThisPosition[Za + 5 * sd] = H[xd[a]] >> 8 & 255, arrayOfTypesOfElementInThisPosition[Za +
-        6 * sd] = H[xd[a]] & 255) : 1 == wd[a] ? (c = ~~y[xd[a] * hd + 4].x, b = ~~y[xd[a] * hd + 4].y, c = c >> 2 << 2, b = b >> 2 << 2, e = 0 + 512 * b + c, arrayOfTypesOfElementInThisPosition[Za + 4 * sd] = e >> 16 & 255, arrayOfTypesOfElementInThisPosition[Za + 5 * sd] = e >> 8 & 255, arrayOfTypesOfElementInThisPosition[Za + 6 * sd] = e & 255) : 2 == wd[a] && (c = ~~B[xd[a]].x, b = ~~B[xd[a]].y, e = 0 + 512 * b + c, arrayOfTypesOfElementInThisPosition[Za + 4 * sd] = e >> 16 & 255, arrayOfTypesOfElementInThisPosition[Za + 5 * sd] = e >> 8 & 255, arrayOfTypesOfElementInThisPosition[Za + 6 * sd] = e & 255), Za++;
+    for (a = 0; a < sd; a++) arrayOfTypesOfElementInThisPosition[Za] = td[a], 0 == ud[a] ? (arrayOfTypesOfElementInThisPosition[Za + 1 * sd] = H[vd[a]] >> 16 & 255, arrayOfTypesOfElementInThisPosition[Za + 2 * sd] = H[vd[a]] >> 8 & 255, arrayOfTypesOfElementInThisPosition[Za + 3 * sd] = H[vd[a]] & 255) : 1 == ud[a] ? (c = ~~stickManBodyPoints[vd[a] * hd + 4].x, b = ~~stickManBodyPoints[vd[a] * hd + 4].y, c = c >> 2 << 2, b = b >> 2 << 2, e = 0 + 512 * b + c, arrayOfTypesOfElementInThisPosition[Za + 1 * sd] = e >> 16 & 255, arrayOfTypesOfElementInThisPosition[Za + 2 * sd] = e >> 8 & 255, arrayOfTypesOfElementInThisPosition[Za + 3 * sd] = e & 255) : 2 == ud[a] && (c = ~~B[vd[a]].x, b = ~~B[vd[a]].y, e = 0 + 512 * b + c, arrayOfTypesOfElementInThisPosition[Za + 1 * sd] = e >> 16 & 255, arrayOfTypesOfElementInThisPosition[Za + 2 * sd] = e >> 8 & 255, arrayOfTypesOfElementInThisPosition[Za + 3 * sd] = e & 255), 0 == wd[a] ? (arrayOfTypesOfElementInThisPosition[Za + 4 * sd] = H[xd[a]] >> 16 & 255, arrayOfTypesOfElementInThisPosition[Za + 5 * sd] = H[xd[a]] >> 8 & 255, arrayOfTypesOfElementInThisPosition[Za +
+        6 * sd] = H[xd[a]] & 255) : 1 == wd[a] ? (c = ~~stickManBodyPoints[xd[a] * hd + 4].x, b = ~~stickManBodyPoints[xd[a] * hd + 4].y, c = c >> 2 << 2, b = b >> 2 << 2, e = 0 + 512 * b + c, arrayOfTypesOfElementInThisPosition[Za + 4 * sd] = e >> 16 & 255, arrayOfTypesOfElementInThisPosition[Za + 5 * sd] = e >> 8 & 255, arrayOfTypesOfElementInThisPosition[Za + 6 * sd] = e & 255) : 2 == wd[a] && (c = ~~B[xd[a]].x, b = ~~B[xd[a]].y, e = 0 + 512 * b + c, arrayOfTypesOfElementInThisPosition[Za + 4 * sd] = e >> 16 & 255, arrayOfTypesOfElementInThisPosition[Za + 5 * sd] = e >> 8 & 255, arrayOfTypesOfElementInThisPosition[Za + 6 * sd] = e & 255), Za++;
     Za += 6 * sd;
     ob = nb
 }
@@ -465,27 +467,108 @@ function loadGameToScreen() {
 
 
 function Hd() {
-    var a, c, b;
-    for (a = 0; 138880 > a; a++) La[a] = 0, Ma[a] = 0;
-    for (a = 0; a < qd; a++) c = ~~C[a].x - 8, b = ~~C[a].y - 8, 0 > c || 496 <= c || 0 > b || 280 <= b || (c = 496 * b + c, La[c] = D[a], D[a] == Nb ? Ma[c] = G[a] : D[a] == ac ? Ma[c] = G[a] & 255 : D[a] == Lc && (Ma[c] = G[a] & 1));
-    Ha > Ja && (c = Ha, Ha = Ja, Ja = c);
-    Ia > Ka && (b = Ia, Ia = Ka, Ka = b);
-    for (a = Sa = 0; a < sd && 500 > Sa; a++) 0 != ud[a] || 0 != wd[a] || ~~C[vd[a]].x < Ha || Ja < ~~C[vd[a]].x || ~~C[vd[a]].y < Ia || Ka < ~~C[vd[a]].y || ~~C[xd[a]].x < Ha || Ja < ~~C[xd[a]].x || ~~C[xd[a]].y < Ia || Ka < ~~C[xd[a]].y || (Na[Sa] = ~~C[vd[a]].x - Ha, Oa[Sa] = ~~C[vd[a]].y - Ia,
-        Pa[Sa] = ~~C[xd[a]].x - Ha, Qa[Sa] = ~~C[xd[a]].y - Ia, Ra[Sa] = td[a], Sa++)
+    var i;
+    var a;
+    var alpha;
+    i = 0;
+    for (; 138880 > i; i++) {
+        La[i] = 0;
+        Ma[i] = 0;
+    }
+    i = 0;
+    for (; i < qd; i++) {
+        a = ~~C[i].x - 8;
+        alpha = ~~C[i].y - 8;
+        if (!(0 > a || 496 <= a || 0 > alpha || 280 <= alpha)) {
+            a = 496 * alpha + a;
+            La[a] = D[i];
+            if (D[i] == Nb) {
+                Ma[a] = G[i];
+            } else {
+                if (D[i] == ac) {
+                    Ma[a] = G[i] & 255;
+                } else {
+                    if (D[i] == Lc) {
+                        Ma[a] = G[i] & 1;
+                    }
+                }
+            }
+        }
+    }
+    if (Ha > Ja) {
+        a = Ha;
+        Ha = Ja;
+        Ja = a;
+    }
+    if (Ia > Ka) {
+        alpha = Ia;
+        Ia = Ka;
+        Ka = alpha;
+    }
+    i = Sa = 0;
+    for (; i < sd && 500 > Sa; i++) {
+        if (!(0 != ud[i] || 0 != wd[i] || ~~C[vd[i]].x < Ha || Ja < ~~C[vd[i]].x || ~~C[vd[i]].y < Ia || Ka < ~~C[vd[i]].y || ~~C[xd[i]].x < Ha || Ja < ~~C[xd[i]].x || ~~C[xd[i]].y < Ia || Ka < ~~C[xd[i]].y)) {
+            Na[Sa] = ~~C[vd[i]].x - Ha;
+            Oa[Sa] = ~~C[vd[i]].y - Ia;
+            Pa[Sa] = ~~C[xd[i]].x - Ha;
+            Qa[Sa] = ~~C[xd[i]].y - Ia;
+            Ra[Sa] = td[i];
+            Sa++;
+        }
+    }
 }
-
 
 function Id() {
-    var a, c, b, d, e = ia - floor((Ja - Ha) / 2) - Ha,
-        f = ja - floor((Ka - Ia) / 2) - Ia;
-    for (b = Ia - 8; b <= Ka - 8; b++)
-        if (!(0 > f + b || 280 <= f + b))
-            for (c = Ha - 8; c <= Ja - 8; c++) 0 > e + c || 496 <= e + c || (d = 496 * b + c, 0 != La[d] && I[(f + b + 8) * screenWidth + (e + c + 8)] == Jb && (a = Bd(e + c + 8, f + b + 8, La[d], 0), 0 <= a && (La[d] == Nb ? (J[a].x = 0.01 * Math.cos(Ma[d] * PI / 32), J[a].y = 0.01 * -Math.sin(Ma[d] * PI / 32), G[a] = Ma[d], I[(f + b + 8) * screenWidth + (e + c + 8)] = l) : La[d] == ac ? G[a] = Ma[d] : La[d] == Lc && (G[a] = Ma[d], E[a] = 0 == G[a] ? 6702131 : 3359829))));
-    e = ia - floor((Ja - Ha) / 2);
-    f = ja - floor((Ka - Ia) / 2);
-    for (a = 0; a < Sa; a++) 8 > e + Na[a] || 504 <= e + Na[a] ||
-        8 > f + Oa[a] || 288 <= f + Oa[a] || 8 > e + Pa[a] || 504 <= e + Pa[a] || 8 > f + Qa[a] || 288 <= f + Qa[a] || (c = I[(f + Oa[a]) * screenWidth + e + Na[a]], b = I[(f + Qa[a]) * screenWidth + e + Pa[a]], c >= p && b >= p && c != b && 255 != (Jd[c] & 255) && 255 != (Jd[b] & 255) && Gd(0, 0, c, b, Ra[a]))
-}
+    var i;
+    var t;
+    var k;
+    var p;
+    var prefix = ia - floor((Ja - Ha) / 2) - Ha;
+    var ret = ja - floor((Ka - Ia) / 2) - Ia;
+    k = Ia - 8;
+    for (; k <= Ka - 8; k++) {
+        if (!(0 > ret + k || 280 <= ret + k)) {
+            t = Ha - 8;
+            for (; t <= Ja - 8; t++) {
+                if (!(0 > prefix + t || 496 <= prefix + t)) {
+                    p = 496 * k + t;
+                    if (0 != La[p] && I[(ret + k + 8) * screenWidth + (prefix + t + 8)] == Jb) {
+                        i = Bd(prefix + t + 8, ret + k + 8, La[p], 0);
+                        if (0 <= i) {
+                            if (La[p] == Nb) {
+                                J[i].x = 0.01 * Math.cos(Ma[p] * PI / 32);
+                                J[i].y = 0.01 * -Math.sin(Ma[p] * PI / 32);
+                                G[i] = Ma[p];
+                                I[(ret + k + 8) * screenWidth + (prefix + t + 8)] = l;
+                            } else {
+                                if (La[p] == ac) {
+                                    G[i] = Ma[p];
+                                } else {
+                                    if (La[p] == Lc) {
+                                        G[i] = Ma[p];
+                                        E[i] = 0 == G[i] ? 6702131 : 3359829;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    prefix = ia - floor((Ja - Ha) / 2);
+    ret = ja - floor((Ka - Ia) / 2);
+    i = 0;
+    for (; i < Sa; i++) {
+        if (!(8 > prefix + Na[i] || 504 <= prefix + Na[i] || 8 > ret + Oa[i] || 288 <= ret + Oa[i] || 8 > prefix + Pa[i] || 504 <= prefix + Pa[i] || 8 > ret + Qa[i] || 288 <= ret + Qa[i])) {
+            t = I[(ret + Oa[i]) * screenWidth + prefix + Na[i]];
+            k = I[(ret + Qa[i]) * screenWidth + prefix + Pa[i]];
+            if (t >= p && k >= p && t != k && 255 != (Jd[t] & 255) && 255 != (Jd[k] & 255)) {
+                Gd(0, 0, t, k, Ra[i]);
+            }
+        }
+    }
+};
 
 function Kd(a, c, b, d) {
     for (var e = a;;)
@@ -512,7 +595,16 @@ function startScript(a, c, b, d) {
         canvasElement.height = screenHeight;
         canvasElement.width = 496;
         canvasElement.height = 422;
-        for (b = 0; 256 > b; b++) Qd[b] = false, Rd[b] = false, Sd[b] = false, Td[b] = false, Ud[b] = false, Vd[b] = false, Wd[b] = 0, Xd[b] = 0;
+        for (b = 0; 256 > b; b++) {
+            Qd[b] = false;
+            Rd[b] = false;
+            Sd[b] = false;
+            Td[b] = false;
+            Ud[b] = false;
+            Vd[b] = false;
+            Wd[b] = 0;
+            Xd[b] = 0;
+        }
         for (b = 0; 10 > b; b++) Wd[48 + b] = 48 + b;
         for (b = 0; 9 > b; b++) Xd[49 + b] = 33 + b;
         for (b = 0; 4 > b; b++) Wd[37 + b] = 37 + b;
@@ -522,8 +614,7 @@ function startScript(a, c, b, d) {
         Wd[17] = Xd[17] = 17;
         Wd[18] = Xd[18] = 18;
         Wd[32] = Xd[32] = 32;
-        Wd[186] =
-            58;
+        Wd[186] = 58;
         Xd[186] = 42;
         Wd[187] = 59;
         Xd[187] = 43;
@@ -558,10 +649,14 @@ function startScript(a, c, b, d) {
         Wd[160] = 94;
         Xd[160] = 126;
         for (b = 0; 1024 > b; b++) Yd[b] = b / 1024;
-        for (b = 0; 1024 > b; b++) d = floor(1024 * Math.random()), a = Yd[b], Yd[b] = Yd[d], Yd[d] = a;
+        for (b = 0; 1024 > b; b++) {
+            d = floor(1024 * Math.random());
+            a = Yd[b];
+            Yd[b] = Yd[d];
+            Yd[d] = a;
+        }
         Zd = floor(1024 * Math.random()) & 1023;
-        $d =
-            floor(512 * Math.random()) | 1;
+        $d = floor(512 * Math.random()) | 1;
         for (b = 0; b < screenWidth * screenHeight; b++) v[b] = 0;
         for (b = 0; b < screenWidth * screenHeight * 4; b++) ae[b] = 255;
         fontImage.m("font.gif", 8, 12);
@@ -582,15 +677,24 @@ function startScript(a, c, b, d) {
             c = c.getImageData(0, 0, d, a).data;
             he(b, d, a);
             d = 0;
-            for (a = c.length; d < a; d += 4) b.a[d >> 2] = 0 == c[d + 3] ? -1 : c[d + 0] << 16 | c[d + 1] << 8 | c[d + 2];
+            for (a = c.length; d < a; d += 4) {
+                b.a[d >> 2] = 0 == c[d + 3] ? -1 : c[d + 0] << 16 | c[d + 1] << 8 | c[d + 2];
+            }
             delete b.img;
             b.j = 1
         }
         0 != ce ? setTimeout(startScript, je()) : loadingPhase++
     }
     if (2 == loadingPhase) {
-        0 == ab.length ? (kb =
-            2, mb = 1) : 0 != db && (kb = 2, mb = 3);
+        if (0 == ab.length) {
+            kb = 2;
+            mb = 1;
+        } else {
+            if(0 != db) {
+                kb = 2;
+                mb = 3;
+            }
+        }
         reset(0);
         saveGameFromScreen();
         0 < db && (b = "/score/dust2.php?a=", b += db, AjaxRequest(b, ""), 1 == me && "ok" == ne[0] ? (eb = ne[1], ad(0), 0 < Za ? (loadGameToScreen(), lb = 1) : lb = 2) : lb = 2, isStopped = 1);
@@ -703,12 +807,12 @@ function reset(a) {
     D[3] = Hc;
     sd = 0;
     we = 64;
-    for (c = gd = 0; c < xe * hd; c++) ye[c] = 0;
-    for (c = 0; c < xe; c++) z[c] = 0;
-    for (c = 0; c < xe; c++) ze[c] = 0;
-    for (c = 0; c < xe; c++) kd[c] = 0;
-    for (c = 0; c < xe; c++) Ae[c] = 0;
-    for (c = 0; c < xe; c++) Be[c] = 0;
+    for (c = counterStickman = 0; c < maxStickmanNumber * hd; c++) ye[c] = 0;
+    for (c = 0; c < maxStickmanNumber; c++) z[c] = 0;
+    for (c = 0; c < maxStickmanNumber; c++) ze[c] = 0;
+    for (c = 0; c < maxStickmanNumber; c++) kd[c] = 0;
+    for (c = 0; c < maxStickmanNumber; c++) Ae[c] = 0;
+    for (c = 0; c < maxStickmanNumber; c++) Be[c] = 0;
     for (c = 0; c < od; c++) A[c] = 0;
     for (c = 0; c < od; c++) S[c] = 0;
     for (c = 0; c <
@@ -739,7 +843,7 @@ function Ge() {
         f = 13;
         g = 291;
         if (Me(f - 4 - 8, g - 1 - 8, 495, 126) && ga && 0 == Xa)
-            if (e = floor((Ne - (f - 4 - 8)) / 55), c = floor((Ie - (g - 1 - 8)) / 14), c = 9 * e + c, console.log("c = ", c), 5 == c) {
+            if (e = floor((Ne - (f - 4 - 8)) / 55), c = floor((Ie - (g - 1 - 8)) / 14), c = 9 * e + c, 5 == c) {
                 if( Ke ) {
                     if( 5 == ea ) {
                         Fa = returnBetween0_MAX(Fa + 8, 56);
@@ -785,7 +889,7 @@ function Ge() {
                     isGravityOn = isGravityOn ? false : true;
                     for (b = 288 * screenWidth - 1; 4096 <= b; b--) Re[b] += isGravityOn ? 1 : -1;
                     Se = 1;
-                    Te()
+                    setGravity()
                 }
             } else if (77 == c) {
             if (xa = returnBetween0_MAX(xa + Pe, 1), 0 != Pe)
@@ -850,7 +954,7 @@ function Ge() {
         
         ed(1);
         c = [1, 2, 4, 8];
-        for (d = 0; d < c[wa] && (1 != isStopped || Je && 0 == Xa && Qd[10] | Qd[13]); d++) cf++, df(), ef(), ff(), gf(), hf();
+        for (d = 0; d < c[wa] && (1 != isStopped || Je && 0 == Xa && Qd[10] | Qd[13]); d++) cf++, df(), ef(), ff(), processStickman(), hf();
         if (0 != ra && 0 != ua)
             for (b = 288 * screenWidth - 1; 4096 <= b; b--) v[b] = imageHandlerForScreen.a[b];
         handlesDrawingMethods();
@@ -933,8 +1037,8 @@ function Ge() {
             g = 291;
             166 > Ne && ga && (f = 178);
             oe(f, g, 124, 70, 0);
-            for (b = a = 0; a < gd; a++, b += hd) e = floor(y[b + 4].x) -
-                8, c = floor(y[b + 4].y) - 8, 0 > e || 496 <= e || 0 > c || 280 <= c || (e >>= 2, c >>= 2, d = 512 * (g + c) + (f + e), z[a] == jd ? v[d] = Ec : z[a] == ld ? v[d] = Fc : z[a] == md ? v[d] = fighterId : z[a] == md + 1 ? v[d] = fighterId : z[a] == nd && (v[d] = cloneId));
+            for (b = a = 0; a < counterStickman; a++, b += hd) e = floor(stickManBodyPoints[b + 4].x) -
+                8, c = floor(stickManBodyPoints[b + 4].y) - 8, 0 > e || 496 <= e || 0 > c || 280 <= c || (e >>= 2, c >>= 2, d = 512 * (g + c) + (f + e), z[a] == jd ? v[d] = Ec : z[a] == ld ? v[d] = Fc : z[a] == md ? v[d] = fighterId : z[a] == md + 1 ? v[d] = fighterId : z[a] == nd && (v[d] = cloneId));
             for (a = 0; a < od; a++) 0 != A[a] && (e = floor(B[a].x) - 8, c = floor(B[a].y) - 8, 0 > e || 496 <= e || 0 > c || 280 <= c || (e >>= 2, c >>= 2, d = 512 * (g + c) + (f + e), v[d] = Hc));
             for (c = 0; 70 > c; c++)
                 for (e = 0; 124 > e; e++) b = (c + 2) * w + (e + 2), d = 2048 * (c + 2) + 4 * (e + 2), a = v[512 * (g + c) + (f + e)], 0 == a && (x[b] == Gb ? a = Ob : x[b] == Hb ? a = Qb : x[b] == Ib ? a = Rb : (a = D[I[d]], a == Hc && (a = 0), 0 == a && (a = D[I[d + 512 + 1]]), a == Hc && (a = 0))), d = s, 10 ==
@@ -1106,7 +1210,7 @@ function bf(a) {
         if (e = ia, f = ja >> 2 << 2, b = (ja >> 2 << 7) + (ia >> 2), m && 0 == x[b])
             if (49 == elementType) {
                 b = Ec;
-                for (a = 0; a < gd; a++) z[a] == jd && (b = Fc);
+                for (a = 0; a < counterStickman; a++) z[a] == jd && (b = Fc);
                 d = 0 !=
                     Pc[ea] ? Pc[ea] : 0 != Pc[fa] ? Pc[fa] : 0;
                 createFighterPlayerClone(e, f, b, d)
@@ -1155,17 +1259,17 @@ function bf(a) {
                 for (d = (u >> 8) - floor(c / 2), M = (F >> 8) - floor(c / 2), $ = d + c / 2 + 0.5, Ca = M + c / 2 + 0.5, f = M; f <= M + c; f++)
                     for (e = d; e <= d + c; e++) 2 > e || Ee <= e || 2 > f || Fe <= f || (e - $) * (e - $) + (f - Ca) * (f - Ca) > floor(c * c / 4) || (b = f * w + e, 54 == elementType ? 0 == x[b] && (x[b] = Gb, P[b] = Q[b] = se[b] = te[b] = ue[b] = 0) : 55 == elementType ? (x[b] == Hb ? Of(e, f, -1) : x[b] == Ib && Of(e, f, 1), x[b] = -2) : 56 == elementType ? 0 == x[b] && (x[b] = -2, P[b] = Q[b] = se[b] = te[b] = ue[b] = 0) : 57 == elementType ? 0 == x[b] && (x[b] = Hb, P[b] = Q[b] = se[b] = te[b] = ue[b] = 0, Of(e, f, 1)) : 58 == elementType && 0 ==
                         x[b] && (x[b] = Ib, P[b] = Q[b] = se[b] = te[b] = ue[b] = 0, Of(e, f, -1)));
-            Te();
+            setGravity();
             if (56 == elementType && 0 == oa)
                 for (m = ia - ka, n = ja - la, t = max(max(abs(m), abs(n)), 1), m = floor((m << 8) / t), n = floor((n << 8) / t), u = (ka << 8) + 127, F = (la << 8) + 127, a = 0; a <= t; a++, u += m, F += n)
                     for (b = p; b < qd; b++) u >> 8 == floor(C[b].x) && F >> 8 == floor(C[b].y) && rd(b--);
             if (54 == elementType || 56 == elementType || 57 == elementType || 58 == elementType)
                 for (a = p; a < qd; a++) 0 != x[(C[a].y >> 2) * w + (C[a].x >> 2)] && rd(a--);
             if (54 == elementType || 55 == elementType || 57 == elementType || 58 == elementType) {
-                for (a = 0; a < gd; a++)
+                for (a = 0; a < counterStickman; a++)
                     if (z[a] == jd || z[a] == ld || z[a] == md || z[a] == md + 1 || z[a] == nd)
                         for (c = 4; 6 > c; c++)
-                            if (b = (y[a * hd + c].y >> 2 << 7) + (y[a * hd + c].x >>
+                            if (b = (stickManBodyPoints[a * hd + c].y >> 2 << 7) + (stickManBodyPoints[a * hd + c].x >>
                                     2), 0 != x[b]) {
                                 id(a--);
                                 break
@@ -1533,7 +1637,7 @@ function Dd() {
             0 == (Se & 63) && (oe(12, 12, 80, 12, 0), drawTextUsingImage(fontImage, 12, 12, "G-MAP " + Se, 0, 6316128))
         }
     Se = 1;
-    Te()
+    setGravity()
 }
 
 function Of(a, c, b) {
@@ -1545,7 +1649,7 @@ function Of(a, c, b) {
     0 == (Se & 127) && (oe(12, 12, 80, 12, 0), drawTextUsingImage(fontImage, 12, 12, "G-MAP " + Se, 0, 6316128))
 }
 
-function Te() {
+function setGravity() {
     if (0 != Se) {
         Se = 0;
         var a;
@@ -1580,8 +1684,8 @@ function Gd(a, c, b, d, e) {
         g = null,
         m = false,
         n = false;
-    0 == a ? (f = C[b], D[b] == nc && (m = true)) : 1 == a ? f = y[b * hd + 1] : 2 == a && (f = B[b]);
-    0 == c ? (g = C[d], D[d] == nc && (n = true)) : 1 == c ? g = y[d * hd + 1] : 2 == c && (g = B[d]);
+    0 == a ? (f = C[b], D[b] == nc && (m = true)) : 1 == a ? f = stickManBodyPoints[b * hd + 1] : 2 == a && (f = B[b]);
+    0 == c ? (g = C[d], D[d] == nc && (n = true)) : 1 == c ? g = stickManBodyPoints[d * hd + 1] : 2 == c && (g = B[d]);
     m && (G[b] = 1);
     n && (G[d] = 1);
     m ? f = 4 : (m = ~~g.x - ~~f.x, f = ~~g.y - ~~f.y, f = Math.sqrt(m * m + f * f));
@@ -1623,8 +1727,8 @@ function ff() {
     we++;
     for (var n = 0; n < sd; n++) {
         c = false;
-        0 == ud[n] ? (b = C[vd[n]], e = J[vd[n]], g = Jd[vd[n]] & 255, D[vd[n]] == nc && (c = true)) : 1 == ud[n] ? (b = y[vd[n] * hd + 1], e = y[vd[n] * hd + 1], g = Be[vd[n]] & 255) : 2 == ud[n] && (b = B[vd[n]], e = W[vd[n]], g = De[vd[n]] & 255);
-        0 == wd[n] ? (d = C[xd[n]], f = J[xd[n]], m = Jd[xd[n]] & 255) : 1 == wd[n] ? (d = y[xd[n] * hd + 1], f = y[xd[n] * hd + 1], m = Be[xd[n]] & 255) : 2 == wd[n] && (d = B[xd[n]], f = W[xd[n]], m = De[xd[n]] & 255);
+        0 == ud[n] ? (b = C[vd[n]], e = J[vd[n]], g = Jd[vd[n]] & 255, D[vd[n]] == nc && (c = true)) : 1 == ud[n] ? (b = stickManBodyPoints[vd[n] * hd + 1], e = stickManBodyPoints[vd[n] * hd + 1], g = Be[vd[n]] & 255) : 2 == ud[n] && (b = B[vd[n]], e = W[vd[n]], g = De[vd[n]] & 255);
+        0 == wd[n] ? (d = C[xd[n]], f = J[xd[n]], m = Jd[xd[n]] & 255) : 1 == wd[n] ? (d = stickManBodyPoints[xd[n] * hd + 1], f = stickManBodyPoints[xd[n] * hd + 1], m = Be[xd[n]] & 255) : 2 == wd[n] && (d = B[xd[n]], f = W[xd[n]], m = De[xd[n]] & 255);
         c && (vectorSub(a, C[xd[n]], C[vd[n]]), rotatePointAroundCenter90Degrees(a), normalize2(a), vectorScale(a, 0.1), J[vd[n]].add(a),
             J[xd[n]].add(a));
         if (1 == td[n]) vectorSub(a, d, b), rotatePointAroundCenter90Degrees(a), normalize2(a), vectorScale(a, 0.1), e.sub(a), f.add(a);
@@ -1652,7 +1756,7 @@ function ff() {
 
 
 function Tf() {
-    for (var a, c, b, d = null, e = null, f = 0, g = 0, m = 0; m < sd; m++) 0 == ud[m] ? (d = C[vd[m]], f = E[vd[m]]) : 1 == ud[m] ? (d = y[vd[m] * hd + 1], f = 16769198) : 2 == ud[m] && (d = B[vd[m]], f = s[A[vd[m]]]), 0 == wd[m] ? (e = C[xd[m]], g = E[xd[m]]) : 1 == wd[m] ? (e = y[xd[m] * hd + 1], g = 16769198) : 2 == wd[m] && (e = B[xd[m]], g = s[A[xd[m]]]), a = (f >> 16 & 255) + (g >> 16 & 255) >> 1, c = (f >> 8 & 255) + (g >> 8 & 255) >> 1, b = (f & 255) + (g & 255) >> 1, 0 != Va ? 1 == Va ? lf(d.x, d.y, e.x, e.y, 14540253) : 2 == Va && lf(d.x, d.y, e.x, e.y, 2236962) : 5 != td[m] && (10 == backgroundDrawType ? (a = floor((2989 * a + 5866 * c + 1145 * b) / 1E4), lf(d.x, d.y, e.x, e.y,
+    for (var a, c, b, d = null, e = null, f = 0, g = 0, m = 0; m < sd; m++) 0 == ud[m] ? (d = C[vd[m]], f = E[vd[m]]) : 1 == ud[m] ? (d = stickManBodyPoints[vd[m] * hd + 1], f = 16769198) : 2 == ud[m] && (d = B[vd[m]], f = s[A[vd[m]]]), 0 == wd[m] ? (e = C[xd[m]], g = E[xd[m]]) : 1 == wd[m] ? (e = stickManBodyPoints[xd[m] * hd + 1], g = 16769198) : 2 == wd[m] && (e = B[xd[m]], g = s[A[xd[m]]]), a = (f >> 16 & 255) + (g >> 16 & 255) >> 1, c = (f >> 8 & 255) + (g >> 8 & 255) >> 1, b = (f & 255) + (g & 255) >> 1, 0 != Va ? 1 == Va ? lf(d.x, d.y, e.x, e.y, 14540253) : 2 == Va && lf(d.x, d.y, e.x, e.y, 2236962) : 5 != td[m] && (10 == backgroundDrawType ? (a = floor((2989 * a + 5866 * c + 1145 * b) / 1E4), lf(d.x, d.y, e.x, e.y,
         a << 16 | a << 8 | a)) : 14 == backgroundDrawType ? lf(d.x, d.y, e.x, e.y, 0) : lf(d.x, d.y, e.x, e.y, a << 16 | c << 8 | b))
 }
 var qd = p,
@@ -2789,147 +2893,169 @@ function ah(a, c) {
     }
     return 0
 }
+
+
+// ================================================================
+//                     StickMan related stuff
+// ================================================================
 var jd = 10,
     ld = 20,
     md = 30,
     nd = 40,
-    gd = 0,
-    xe = 50,
+    counterStickman = 0,
+    maxStickmanNumber = 50,
     hd = 11,
-    y = Array(xe * hd);
-for (da = 0; da < xe * hd; da++) y[da] = new Vector;
-var Y = Array(xe * hd);
-for (da = 0; da < xe * hd; da++) Y[da] = new Vector;
-var ye = new Int32Array(xe * hd),
-    z = new Int32Array(xe),
-    ze = new Int32Array(xe),
-    kd = new Int32Array(xe),
-    dh = Array(xe);
-for (da = 0; da < xe; da++) dh[da] = new Vector;
-var Ae = new Int32Array(xe),
-    Be = new Uint8Array(xe),
+    stickManBodyPoints = Array(maxStickmanNumber * hd); // 550
+for (da = 0; da < maxStickmanNumber * hd; da++) stickManBodyPoints[da] = new Vector;
+var stickManOldBodyPoints = Array(maxStickmanNumber * hd); // 550
+for (da = 0; da < maxStickmanNumber * hd; da++) stickManOldBodyPoints[da] = new Vector;
+var ye = new Int32Array(maxStickmanNumber * hd),
+    z = new Int32Array(maxStickmanNumber),
+    ze = new Int32Array(maxStickmanNumber),
+    kd = new Int32Array(maxStickmanNumber),
+    dh = Array(maxStickmanNumber);
+for (da = 0; da < maxStickmanNumber; da++) dh[da] = new Vector;
+var Ae = new Int32Array(maxStickmanNumber),
+    Be = new Uint8Array(maxStickmanNumber),
     eh = [0, 0],
     fh = [0, 0],
     gh = [0, 0],
-    hh = [0, 0],
-    ih = [0, 0],
+    playerHealth = [0, 0],
+    playerDamageState = [0, 0],
     jh = [0, 0, 0.5, 0.5, 0.5, 0.5, 0.8, 1, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 0.5, 0.5, 0.8, 0.5, 0.5, 0.8, 0.5, 0.5, 1, 0.5, 0.8, 0.5, 0, 1, 1, 0, 0.5, 0.5, 0, 0.8, 0.5, 0.5, 0.8, 0.9, 0.1, 0.1, 1, 0.5, 0.5, 1, 0.5, 0, 0, 0, 0, 0, 0.5, 0.5, 0.2],
     kh = [0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 function createFighterPlayerClone(_X, _Y, TYPE, d) {
-    if (gd != xe) {
+    if (counterStickman != maxStickmanNumber) {
         var e, f;
         if (TYPE == Ec || TYPE == Fc) {
-            for (e = f = 0; e < gd; e++) z[e] != jd && z[e] != ld || f++;
+            for (e = f = 0; e < counterStickman; e++) {
+                z[e] != jd && z[e] != ld || f++;
+            }
             if (2 <= f || 0 != d && 0 == kh[d]) return;
             e = TYPE == Ec ? 0 : 1;
-            hh[e] = 48;
-            ih[e] = 0
+            playerHealth[e] = 48;
+            playerDamageState[e] = 0
         }
-        f = gd * hd;
-        for (e = 0; e < hd; e++, f++) TYPE == cloneId ? setToVector(y[f], _X, _Y) : 1 == e ? setToVector(y[f], _X, _Y) : setToVector(y[f], _X + customRandom2(4), _Y + customRandom2(4)), Y[f].set(y[f]), ye[f] = 0;
-        TYPE == Ec ? z[gd] = jd : TYPE == Fc ? z[gd] = ld : TYPE == fighterId ? z[gd] = md : TYPE == cloneId && (z[gd] = nd);
-        ze[gd] = 0;
-        kd[gd] = d;
-        setToVector(dh[gd], 0, 0);
-        Ae[gd] = 0;
-        Be[gd] = 0;
-        gd++
+        f = counterStickman * hd;
+        for (e = 0; e < hd; e++, f++) TYPE == cloneId ? setToVector(stickManBodyPoints[f], _X, _Y) : 1 == e ? setToVector(stickManBodyPoints[f], _X, _Y) : setToVector(stickManBodyPoints[f], _X + customRandom2(4), _Y + customRandom2(4)), stickManOldBodyPoints[f].set(stickManBodyPoints[f]), ye[f] = 0;
+        TYPE == Ec ? z[counterStickman] = jd : TYPE == Fc ? z[counterStickman] = ld : TYPE == fighterId ? z[counterStickman] = md : TYPE == cloneId && (z[counterStickman] = nd);
+        ze[counterStickman] = 0;
+        kd[counterStickman] = d;
+        setToVector(dh[counterStickman], 0, 0);
+        Ae[counterStickman] = 0;
+        Be[counterStickman] = 0;
+        counterStickman++
     }
 }
 
 function id(a) {
-    if (0 != gd) {
-        gd--;
+    if (0 != counterStickman) {
+        counterStickman--;
         mg(1, a);
-        for (var c = a * hd, b = gd * hd, d = 0; d < hd; d++, c++, b++) y[c].set(y[b]), Y[c].set(Y[b]), ye[c] = ye[b];
-        z[a] = z[gd];
-        ze[a] = ze[gd];
-        kd[a] = kd[gd];
-        dh[a].set(dh[gd]);
-        Ae[a] = Ae[gd];
-        Be[a] = Be[gd];
-        ng(1, gd, a)
+        for (var c = a * hd, b = counterStickman * hd, d = 0; d < hd; d++, c++, b++) stickManBodyPoints[c].set(stickManBodyPoints[b]), stickManOldBodyPoints[c].set(stickManOldBodyPoints[b]), ye[c] = ye[b];
+        z[a] = z[counterStickman];
+        ze[a] = ze[counterStickman];
+        kd[a] = kd[counterStickman];
+        dh[a].set(dh[counterStickman]);
+        Ae[a] = Ae[counterStickman];
+        Be[a] = Be[counterStickman];
+        ng(1, counterStickman, a)
     }
 }
 
 function Ed(a) {
     var c, b;
-    for (c = 0; c < gd; c++) {
+    for (c = 0; c < counterStickman; c++) {
         b = c * hd;
-        if (z[c] == jd || z[c] == ld) b = (Y[b + 1].y << 9) + ~~Y[b + 1].x;
-        else if (z[c] == md || z[c] == md + 1) b = (Y[b + 1].y << 9) + ~~Y[b + 1].x;
+        if (z[c] == jd || z[c] == ld) b = (stickManOldBodyPoints[b + 1].y << 9) + ~~stickManOldBodyPoints[b + 1].x;
+        else if (z[c] == md || z[c] == md + 1) b = (stickManOldBodyPoints[b + 1].y << 9) + ~~stickManOldBodyPoints[b + 1].x;
         else continue;
         if (b == a) return c
     }
     return -1
 }
 
-function lh(a, c, b, d) {
-    var e = y[a].x - Y[a].x,
-        f = y[a].y - Y[a].y;
-    Y[a].set(y[a]);
-    null == c ? (c = (y[a].y << 9) + ~~y[a].x, e += U[c] * b, f += V[c] * b) : (e += c.x * b, f += c.y * b);
-    y[a].x += e * d;
-    y[a].y += f * d
+function movePlayerJoints(a, c, b, d) {
+    distanceX = stickManBodyPoints[a].x - stickManOldBodyPoints[a].x;
+    distanceY = stickManBodyPoints[a].y - stickManOldBodyPoints[a].y;
+    stickManOldBodyPoints[a].set(stickManBodyPoints[a]);
+    if (null == c) {
+        c = (stickManBodyPoints[a].y << 9) + ~~stickManBodyPoints[a].x;
+        distanceX += U[c] * b;
+        distanceY += V[c] * b;
+    } else {
+        distanceX += c.x * b;
+        distanceY += c.y * b;
+    }
+    stickManBodyPoints[a].x += distanceX * d;
+    stickManBodyPoints[a].y += distanceY * d
 }
 
-function mh(a, c, b, d, e) {
+function constraintJoints(point1, point2, b, d, e) {
     var f = new Vector;
-    vectorSub(f, y[c], y[a]);
+    vectorSub(f, stickManBodyPoints[point2], stickManBodyPoints[point1]);
     var g = normalize(f);
-    0 != g && (b -= g, d *= b, e *= b, y[a].x -= f.x * d, y[a].y -= f.y * d, y[c].x += f.x * e, y[c].y += f.y * e)
+    if(0 != g) {
+        b -= g;
+        d *= b;
+        e *= b;
+        stickManBodyPoints[point1].x -= f.x * d;
+        stickManBodyPoints[point1].y -= f.y * d;
+        stickManBodyPoints[point2].x += f.x * e;
+        stickManBodyPoints[point2].y += f.y * e
+    } 
 }
 
 function nh(a, c, b, d, e) {
     var f = new Vector;
-    vectorSub(f, y[a], Y[a]);
-    y[a].set(Y[a]);
+    vectorSub(f, stickManBodyPoints[a], stickManOldBodyPoints[a]);
+    stickManBodyPoints[a].set(stickManOldBodyPoints[a]);
     if (0 != b) {
-        var g = (y[a].y >> 2 << 7) + (y[a].x >> 2);
+        var g = (stickManBodyPoints[a].y >> 2 << 7) + (stickManBodyPoints[a].x >> 2);
         f.x += P[g] * b;
         f.y += Q[g] * b
     }
     0 == e ? (b = vectorLength2(f) + 1, 8 <= b ? (vectorScale(f, 3.8 / b), b = 2) : 4 <= b ? (vectorScale(f, 0.5), b = 2) : b = 1) : (b = floor(vectorLength2(f) / 3) + 1, vectorScale(f, 1 / b));
     ye[a] = 0;
-    if (1 == d) vectorScale(f, b), y[a].add(f), y[a].x = minInsideRange(y[a].x, 4, 507), y[a].y = minInsideRange(y[a].y, 4, 291);
+    if (1 == d) vectorScale(f, b), stickManBodyPoints[a].add(f), stickManBodyPoints[a].x = minInsideRange(stickManBodyPoints[a].x, 4, 507), stickManBodyPoints[a].y = minInsideRange(stickManBodyPoints[a].y, 4, 291);
     else {
         d = new Vector;
         e = new Vector;
-        null == c ? (g = (y[a].y << 9) + ~~y[a].x, setToVector(e, U[g], V[g])) : e.set(c);
+        null == c ? (g = (stickManBodyPoints[a].y << 9) + ~~stickManBodyPoints[a].x, setToVector(e, U[g], V[g])) : e.set(c);
         c = e.x * f.x + e.y * f.y;
         vectorScale(e, c);
         d.set(f);
         d.sub(e);
         for (var m, n, g = 0; g < b; g++) {
-            m = y[a].x + e.x;
-            n = y[a].y + e.y;
+            m = stickManBodyPoints[a].x + e.x;
+            n = stickManBodyPoints[a].y + e.y;
             if (4 > m || 508 <= m || 4 >
                 n || 292 <= n) {
                 ye[a] = -5;
                 return
             }
             f = (n << 9) + ~~m;
-            I[f] <= l ? setToVector(y[a], m, n) : I[f] <= Kb ? (vectorScale(d, 0.5), ye[a] = I[f]) : (0 > c ? setToVector(y[a], m, n) : (vectorScale(d, jh[D[I[f]]]), 2 == X[D[I[f]]] ? setToVector(y[a], m, n) : D[I[f]] == Lc && (m = ~~m - ~~y[a].x, n = ~~n - ~~y[a].y, 0 == G[I[f]] ? (0 == m && 1 == n && (d.x -= 1), -1 == m && 0 == n && (d.y -= 1), 0 == m && -1 == n && (d.x += 1), 1 == m && 0 == n && (d.y += 1)) : (0 == m && 1 == n && (d.x += 1), -1 == m && 0 == n && (d.y += 1), 0 == m && -1 == n && (d.x -= 1), 1 == m && 0 == n && (d.y -= 1)))), ye[a] = D[I[f]])
+            I[f] <= l ? setToVector(stickManBodyPoints[a], m, n) : I[f] <= Kb ? (vectorScale(d, 0.5), ye[a] = I[f]) : (0 > c ? setToVector(stickManBodyPoints[a], m, n) : (vectorScale(d, jh[D[I[f]]]), 2 == X[D[I[f]]] ? setToVector(stickManBodyPoints[a], m, n) : D[I[f]] == Lc && (m = ~~m - ~~stickManBodyPoints[a].x, n = ~~n - ~~stickManBodyPoints[a].y, 0 == G[I[f]] ? (0 == m && 1 == n && (d.x -= 1), -1 == m && 0 == n && (d.y -= 1), 0 == m && -1 == n && (d.x += 1), 1 == m && 0 == n && (d.y += 1)) : (0 == m && 1 == n && (d.x += 1), -1 == m && 0 == n && (d.y += 1), 0 == m && -1 == n && (d.x -= 1), 1 == m && 0 == n && (d.y -= 1)))), ye[a] = D[I[f]])
         }
         for (g = 0; g < b; g++) {
-            m = y[a].x + d.x;
-            n = y[a].y;
+            m = stickManBodyPoints[a].x + d.x;
+            n = stickManBodyPoints[a].y;
             if (4 > m || 508 <= m || 4 > n || 292 <= n) {
                 ye[a] = -5;
                 break
             }
             f = (n << 9) + ~~m;
             I[f] <=
-                l ? setToVector(y[a], m, n) : (2 == X[D[I[f]]] && setToVector(y[a], m, n), ye[a] = D[I[f]]);
-            m = y[a].x;
-            n = y[a].y + d.y;
+                l ? setToVector(stickManBodyPoints[a], m, n) : (2 == X[D[I[f]]] && setToVector(stickManBodyPoints[a], m, n), ye[a] = D[I[f]]);
+            m = stickManBodyPoints[a].x;
+            n = stickManBodyPoints[a].y + d.y;
             if (4 > m || 508 <= m || 4 > n || 292 <= n) {
                 ye[a] = -5;
                 break
             }
             f = (n << 9) + ~~m;
-            I[f] <= l ? setToVector(y[a], m, n) : (2 == X[D[I[f]]] && setToVector(y[a], m, n), ye[a] = D[I[f]])
+            I[f] <= l ? setToVector(stickManBodyPoints[a], m, n) : (2 == X[D[I[f]]] && setToVector(stickManBodyPoints[a], m, n), ye[a] = D[I[f]])
         }
     }
 }
@@ -2949,193 +3075,625 @@ function ph(a, c, b) {
         if (0 == Ae[a]) {
             if (47 == ea && Ke || 47 == fa && Oe) {
                 e = 400;
-                for (var g = c; g < b; g++) d.x = ia - Y[g].x, d.y = ja - Y[g].y, f = fastLength(d), f < e && (e = f, Ae[a] = g - c + 1)
+                for (var g = c; g < b; g++) d.x = ia - stickManOldBodyPoints[g].x, d.y = ja - stickManOldBodyPoints[g].y, f = fastLength(d), f < e && (e = f, Ae[a] = g - c + 1)
             }
-        } else 47 == ea && We || 47 == fa && Xe ? (y[c + Ae[a] - 1].x += 0.1 * (ia - y[c + Ae[a] - 1].x), y[c + Ae[a] - 1].y += 0.1 * (ja - y[c + Ae[a] - 1].y)) : Ae[a] = 0
+        } else 47 == ea && We || 47 == fa && Xe ? (stickManBodyPoints[c + Ae[a] - 1].x += 0.1 * (ia - stickManBodyPoints[c + Ae[a] - 1].x), stickManBodyPoints[c + Ae[a] - 1].y += 0.1 * (ja - stickManBodyPoints[c + Ae[a] - 1].y)) : Ae[a] = 0
     }
 }
 
 
-function gf() {
+function processStickman() {
     var a;
-    for (a = 0; a < gd; a++) z[a] <= jd + 3 ? qh(a) : z[a] <= ld + 3 ? qh(a) : rh(a)
-}
-
-function qh(a) {
-    var c, b, d, e, f, g = new Vector,
-        m = new Vector,
-        n = new Vector;
-    b = a * hd;
-    if (z[a] == jd || z[a] == ld) {
-        var t = z[a] == jd ? 0 : 1,
-            u = z[a] == jd ? Sd[37] : Sd[65] | Sd[97],
-            F = z[a] == jd ? Sd[39] : Sd[68] | Sd[100],
-            M = z[a] == jd ? Sd[38] : Sd[87] | Sd[119],
-            $ = z[a] == jd ? Sd[40] : Sd[83] | Sd[115];
-        ze[a]++;
-        d = (Y[b + 4].y << 9) + ~~Y[b + 4].x;
-        e = (Y[b + 5].y << 9) + ~~Y[b + 5].x;
-        f = I[(~~Y[b + 4].y + 0.5 + V[d] << 9) + floor(~~Y[b + 4].x + 0.5 + U[d])] > l ? 1 : 0;
-        var Ca = I[(~~Y[b + 5].y + 0.5 + V[e] << 9) + floor(~~Y[b + 5].x + 0.5 + U[e])] > l ? 1 : 0;
-        0 == f && (f = I[d] > l ? 1 : 0);
-        0 == Ca && (Ca = I[e] > l ? 1 : 0);
-        g.x = U[d] + U[e];
-        g.y = V[d] + V[e];
-        normalize2(g);
-        m.set(g);
-        n.set(g);
-        rotatePointAroundCenter90Degrees(m);
-        if ($ && kd[a] == xc)
-            for (c = 0; 6 > c; c++) lh(b + c, n, 0.01, 0.997);
-        else $ && kd[a] == Wb || (lh(b + 0, n, -0.2, 0.995), lh(b + 1, n, -0.1, 0.995), lh(b + 2, n, 0, 0.995), lh(b + 3, n, 0, 0.995), lh(b + 4, n, 0.3, 0.995), lh(b + 5, n, 0.3, 0.995));
-        ph(a, b, b + 6);
-        y[b].add(dh[a]);
-        vectorScale(dh[a], 0.5);
-        1 < eh[t] ? eh[t]-- : 0 < eh[t] && (1 == f || 1 == Ca) && eh[t]--;
-        0 == eh[t] ? F ? (eh[t] = 15, g.x = y[b + 5].x - y[b + 4].x, g.y = y[b + 5].y - y[b + 4].y, c = g.x * m.x + g.y * m.y, 0 < c ? (y[b + 2].x += 3.2 * V[d] + 3 * -U[d] * 0.8, y[b + 2].y += 3.2 * -U[d] + 3 * -V[d] * 0.8) : (y[b + 3].x += 3.2 * V[e] + 3 * -U[e] * 0.8, y[b + 3].y += 3.2 * -U[e] +
-            3 * -V[e] * 0.8), gh[t] = 1) : u && (eh[t] = 15, g.x = y[b + 5].x - y[b + 4].x, g.y = y[b + 5].y - y[b + 4].y, c = g.x * m.x + g.y * m.y, 0 > c ? (y[b + 2].x += 3.2 * -V[d] + 3 * -U[d] * 0.8, y[b + 2].y += 3.2 * U[d] + 3 * -V[d] * 0.8) : (y[b + 3].x += 3.2 * -V[e] + 3 * -U[e] * 0.8, y[b + 3].y += 3.2 * U[e] + 3 * -V[e] * 0.8), gh[t] = 0) : u ? (g.x = y[b + 1].x - Y[b + 1].x, g.y = y[b + 1].y - Y[b + 1].y, c = g.x * m.x + g.y * m.y, 0 < c && (y[b + 1].x -= 0.2 * m.x, y[b + 1].y -= 0.2 * m.y), gh[t] = 0) : F && (g.x = y[b + 1].x - Y[b + 1].x, g.y = y[b + 1].y - Y[b + 1].y, c = g.x * m.x + g.y * m.y, 0 > c && (y[b + 1].x += 0.2 * m.x, y[b + 1].y += 0.2 * m.y), gh[t] = 1);
-        1 < fh[t] && fh[t]--;
-        0 < fh[t] &&
-            (1 == f || 1 == Ca) && fh[t]--;
-        0 == fh[t] && M && (fh[t] = 50, y[b + 4].x -= 6 * n.x, y[b + 4].y -= 6 * n.y, y[b + 5].x -= 6 * n.x, y[b + 5].y -= 6 * n.y);
-        $ && kd[a] == Wb || (d = 0.5, mh(b + 0, b + 1, 4, d, d), mh(b + 1, b + 2, 4, d, d), mh(b + 1, b + 3, 4, d, d), mh(b + 2, b + 4, 5, d, d), mh(b + 3, b + 5, 5, d, d), mh(b + 2, b + 3, 5, 0.1, 0.1));
-        d = 0.1;
-        for (c = 0; 4 > c; c++) nh(b + c, n, d, 1, 0 < Ae[a] ? 1 : 0);
-        for (c = 4; 6 > c; c++) nh(b + c, n, d, 0, 0 < Ae[a] ? 1 : 0);
-        if (!$)
-            for (f = -1; 2 > f; f++)
-                for (e = -1; 2 > e; e++) d = I[(Y[b + 0].y + f << 9) + (~~Y[b + 0].x + e)], 1 == kh[D[d]] && (kd[a] = D[d]);
-        M && (u || F) || !$ || 0 == kd[a] || (e = ~~y[b + 0].x, f = ~~y[b + 0].y, kd[a] == jc && (e +=
-            m.x * (0 == gh[t] ? 0 : -0) + 8 * n.x, f += m.y * (0 == gh[t] ? 0 : -0) + 8 * n.y, y[b + 0].x += m.x * (0 == gh[t] ? -0.5 : 0.5) + -1 * n.x, y[b + 0].y += m.y * (0 == gh[t] ? -0.5 : 0.5) + -1 * n.y), e = minInsideRange(e, 8, 503), f = minInsideRange(f, 8, 287), kd[a] == Nb ? (d = (f >> 2 << 7) + (e >> 2), 0 == x[d] && (P[d] += m.x * (0 == gh[t] ? -1 : 1), Q[d] += m.y * (0 == gh[t] ? -1 : 1))) : kd[a] != Wb && kd[a] != xc && I[f * screenWidth + e] == Jb && (d = Bd(e, f, kd[a], 0), 0 <= d && (kd[a] == r ? (J[d].x = m.x * (0 == gh[t] ? -7 : 7) + 2.4 * n.x, J[d].y = m.y * (0 == gh[t] ? -7 : 7) + 2.4 * n.y, G[d] = 2) : kd[a] == Yb ? (J[d].x = m.x * (0 == gh[t] ? -20 : 20) + 20 * n.x, J[d].y = m.y * (0 == gh[t] ? -20 : 20) + 20 * n.y) : kd[a] ==
-            jc ? (J[d].x = m.x * (0 == gh[t] ? 20 : -20), J[d].y = m.y * (0 == gh[t] ? 20 : -20)) : kd[a] == oc ? G[d] = 0 == gh[t] ? (floor(4 * -getAngle(n) / TWOPI - 0.5) & 3) << 12 : (floor(4 * -getAngle(n) / TWOPI - 2.5) & 3) << 12 : kd[a] == rc ? G[d] = 0 == gh[t] ? (floor(8 * getAngle(n) / TWOPI + 6.5) & 7) + 1 : (floor(8 * getAngle(n) / TWOPI + 2.5) & 7) + 1 : (J[d].x = m.x * (0 == gh[t] ? -20 : 20) + customRandomBetween(-1, 1), J[d].y = m.y * (0 == gh[t] ? -20 : 20) + customRandomBetween(-1, 1)))));
-        if (1 == xa)
-            for (m = 4; 5 >= m; m++) {
-                if (f = e = 0, 8 > y[b + m].x ? (e = 502, f = ~~Y[b + m].y) : 504 <= y[b + m].x ? (e = 10, f = ~~Y[b + m].y) : 8 > y[b + m].y ? (e = ~~Y[b + m].x, f = 286) : 288 <= y[b + m].y && (e = ~~Y[b + m].x, f = 10), 0 != e + f)
-                    if (d = (f << 9) + e, I[d] <= l || 2 == X[D[I[d]]]) {
-                        mg(1,
-                            a);
-                        vectorSub(g, y[b + m], Y[b + m]);
-                        normalize(g);
-                        for (c = 0; 5 >= c; c++) y[b + c].x = e + g.x + customRandomBetween(-0.1, 0.1), y[b + c].y = f + g.y + customRandomBetween(-0.1, 0.1), setToVector(Y[b + c], e, f), ye[b + c] = 0;
-                        break
-                    } else y[b + m].set(Y[b + m]), ye[b + m] = Ob, 0 < fh[t] && fh[t]--, 0 < eh[t] && eh[t]--
-            } else -5 == oh(b, b + 6) && (z[a] = 0 == t ? jd + 2 : ld + 2);
-        0 < ih[t] && ih[t]--;
-        b = oh(b, b + 6);
-        0 > b && (hh[t] += b, ih[t] = 25);
-        0 >= hh[t] && (z[a] = 0 == t ? jd + 2 : ld + 2)
-    } else if (z[a] == jd + 2 || z[a] == ld + 2) y[b + 10].set(y[b + 5]), Y[b + 10].set(Y[b + 5]), y[b + 9].set(y[b + 4]), Y[b + 9].set(Y[b + 4]), y[b + 8].set(y[b + 3]), Y[b + 8].set(Y[b + 3]), y[b + 7].set(y[b + 3]), Y[b + 7].set(Y[b +
-        3]), y[b + 6].set(y[b + 2]), Y[b + 6].set(Y[b + 2]), y[b + 5].set(y[b + 2]), Y[b + 5].set(Y[b + 2]), y[b + 4].set(y[b + 1]), Y[b + 4].set(Y[b + 1]), y[b + 3].set(y[b + 1]), Y[b + 3].set(Y[b + 1]), y[b + 2].set(y[b + 1]), Y[b + 2].set(Y[b + 1]), y[b + 1].set(y[b + 0]), Y[b + 1].set(Y[b + 0]), y[b + 0].set(y[b + 0]), Y[b + 0].set(Y[b + 0]), dh[a].y -= 1, ze[a] = 0, z[a]++;
-    else if (z[a] == jd + 3 || z[a] == ld + 3) {
-        ze[a]++;
-        for (c = 0; 11 > c; c++) lh(b + c, null, 0.1, 0.999), y[b + c].add(dh[a]);
-        vectorScale(dh[a], 0.5);
-        d = 0.5;
-        t = (150 - ze[a]) / 150;
-        mh(b + 1, b + 2, 4 * t, d, d);
-        mh(b + 3, b + 5, 4 * t, d, d);
-        mh(b + 4, b + 7, 4 * t, d, d);
-        mh(b + 6, b +
-            9, 5 * t, d, d);
-        mh(b + 8, b + 10, 5 * t, d, d);
-        d = 0.1;
-        for (c = 0; 11 > c; c++) nh(b + c, null, d, 0, 0);
-        150 < ze[a] && id(a--)
+    for (a = 0; a < counterStickman; a++) {
+        if( z[a] <= jd + 3 ) {
+            // Move player 1
+            processPlayerMove(a);
+        } else if(z[a] <= ld + 3 ) {
+            // Move player 2
+            processPlayerMove(a);
+        } else {
+            // Move fighter (cpu)
+            processFighterMove(a);
+        } 
     }
 }
 
-
-function rh(a) {
-    var c, b, d, e, f, g = new Vector;
-    f = new Vector;
-    e = new Vector;
-    b = a * hd;
-    if (z[a] == md || z[a] == md + 1) {
-        ze[a]++;
-        d = (Y[b + 4].y << 9) + ~~Y[b + 4].x;
-        c = (Y[b + 5].y << 9) + ~~Y[b + 5].x;
-        g.x = U[d] + U[c];
-        g.y = V[d] + V[c];
-        normalize2(g);
-        f.set(g);
-        e.set(g);
-        rotatePointAroundCenter90Degrees(f);
-        z[a] == md ? (lh(b + 0, e, -0.2, 0.995), lh(b + 1, e, -0.1, 0.995), lh(b + 2, e, 0, 0.995), lh(b + 3, e, 0, 0.995), lh(b + 4, e, 0.3, 0.995), lh(b + 5, e, 0.3, 0.995)) : (lh(b + 0, e, 0.1, 0.995), lh(b + 1, e, 0.1, 0.995), lh(b + 2, e, 0.1, 0.995), lh(b + 3, e, 0.1, 0.995), lh(b + 4, e, 0.1, 0.995), lh(b + 5, e, 0.1, 0.995));
-        ph(a, b, b + 6);
-        y[b].add(dh[a]);
-        vectorScale(dh[a], 0.5);
-        if (z[a] == md) {
-            g.x = y[b + 5].x - y[b + 4].x;
-            g.y = y[b + 5].y - y[b + 4].y;
-            f = g.x * f.x + g.y * f.y;
-            if (0 != ye[b + 4] && 0 != ye[b + 5]) {
-                var m = customRandom(100);
-                5 > m ? 0 < f ? (y[b + 4].x += 4 * V[d] + 4 * -U[d], y[b + 4].y += 4 * -U[d] + 4 * -V[d]) : (y[b + 5].x += 4 * V[c] + 4 * -U[c], y[b + 5].y += 4 * -U[c] + 4 * -V[c]) : 10 > m && (0 > f ? (y[b + 4].x += 4 * -V[d] + 4 * -U[d], y[b + 4].y += 4 * U[d] + 4 * -V[d]) : (y[b + 5].x += 4 * -V[c] + 4 * -U[c], y[b + 5].y += 4 * U[c] + 4 * -V[c]))
-            } else 0 != ye[b + 4] ? customRandomBoolean(0.02) && (f = customRandomBetween(-4, 4), y[b + 4].x += V[d] * f + 4 * -U[d], y[b + 4].y += -U[d] * f + 4 * -V[d]) : 0 != ye[b + 5] && customRandomBoolean(0.02) && (f = customRandomBetween(-4, 4), y[b + 5].x += V[c] * f + 4 * -U[c], y[b +
-                5].y += -U[c] * f + 4 * -V[c]);
-            for (c = 0; c < gd; c++) a == c || z[c] != md && z[c] != md + 1 && z[c] != jd && z[c] != ld || (d = c * hd, f = abs(y[b + 4].x - y[d].x), m = abs(y[b + 4].y - y[d].y), 4 >= f && 4 >= m && (dh[c].x += 1 * (y[b + 4].x - Y[b + 4].x), dh[c].y += 2 * (y[b + 4].y - Y[b + 4].y), z[c] == md && (z[c] = md + 1), ze[c] = 0, z[c] == jd && (hh[0] -= 8, ih[0] = 25), z[c] == ld && (hh[1] -= 8, ih[1] = 25)), f = abs(y[b + 5].x - y[d].x), m = abs(y[b + 5].y - y[d].y), 4 >= f && 4 >= m && (dh[c].x += 1 * (y[b + 5].x - Y[b + 5].x), dh[c].y += 2 * (y[b + 5].y - Y[b + 5].y), z[c] == md && (z[c] = md + 1), ze[c] = 0, z[c] == jd && (hh[0] -= 8, ih[0] = 25), z[c] == ld && (hh[1] -=
-                8, ih[1] = 25)))
-        } else 10 < ze[a] && (0 != ye[b + 4] || 0 != ye[b + 5]) && customRandomBoolean(0.1) && (z[a] = md, ze[a] = 0);
-        f = 0.5;
-        mh(b + 0, b + 1, 4, f, f);
-        mh(b + 1, b + 2, 4, f, f);
-        mh(b + 1, b + 3, 4, f, f);
-        mh(b + 2, b + 4, 5, f, f);
-        mh(b + 3, b + 5, 5, f, f);
-        mh(b + 2, b + 3, 5, 0.1, 0.1);
-        d = 0.1;
-        for (c = 0; 4 > c; c++) nh(b + c, e, d, 1, 0 < Ae[a] ? 1 : 0);
-        for (c = 4; 6 > c; c++) nh(b + c, e, d, 0, 0 < Ae[a] ? 1 : 0);
-        z[a] == md && (0 != oh(b, b + 6) ? ze[a] = 0 : 50 < ze[a] && (z[a] = md + 1));
-        if (1 == xa)
-            for (c = 4; 5 >= c; c++) {
-                if (f = e = 0, 8 > y[b + c].x ? (e = 502, f = ~~Y[b + c].y) : 504 <= y[b + c].x ? (e = 10, f = ~~Y[b + c].y) : 8 > y[b + c].y ? (e = ~~Y[b + c].x, f = 286) : 288 <= y[b + c].y && (e = ~~Y[b +
-                        c].x, f = 10), 0 != e + f)
-                    if (d = (f << 9) + e, I[d] <= l || 2 == X[D[I[d]]]) {
-                        mg(1, a);
-                        vectorSub(g, y[b + c], Y[b + c]);
-                        normalize(g);
-                        for (c = 0; 5 >= c; c++) y[b + c].x = e + g.x + customRandomBetween(-0.1, 0.1), y[b + c].y = f + g.y + customRandomBetween(-0.1, 0.1), setToVector(Y[b + c], e, f), ye[b + c] = 0;
-                        break
-                    } else y[b + c].set(Y[b + c]), ye[b + c] = Ob
-            } else -5 == oh(b, b + 6) && (z[a] = md + 2);
-        0 > oh(b, b + 6) && (z[a] = md + 2)
-    } else if (z[a] == md + 2) y[b + 10].set(y[b + 5]), Y[b + 10].set(Y[b + 5]), y[b + 9].set(y[b + 4]), Y[b + 9].set(Y[b + 4]), y[b + 8].set(y[b + 3]), Y[b + 8].set(Y[b + 3]), y[b + 7].set(y[b + 3]), Y[b + 7].set(Y[b + 3]), y[b + 6].set(y[b + 2]), Y[b + 6].set(Y[b + 2]), y[b + 5].set(y[b +
-        2]), Y[b + 5].set(Y[b + 2]), y[b + 4].set(y[b + 1]), Y[b + 4].set(Y[b + 1]), y[b + 3].set(y[b + 1]), Y[b + 3].set(Y[b + 1]), y[b + 2].set(y[b + 1]), Y[b + 2].set(Y[b + 1]), y[b + 1].set(y[b + 0]), Y[b + 1].set(Y[b + 0]), y[b + 0].set(y[b + 0]), Y[b + 0].set(Y[b + 0]), dh[a].y -= 1, ze[a] = 0, z[a] = md + 3;
-    else if (z[a] == md + 3) {
-        ze[a]++;
-        for (c = 0; 11 > c; c++) lh(b + c, null, 0.1, 0.999), y[b + c].add(dh[a]);
-        vectorScale(dh[a], 0.5);
-        f = 0.5;
-        g = (150 - ze[a]) / 150;
-        mh(b + 1, b + 2, 4 * g, f, f);
-        mh(b + 3, b + 5, 4 * g, f, f);
-        mh(b + 4, b + 7, 4 * g, f, f);
-        mh(b + 6, b + 9, 5 * g, f, f);
-        mh(b + 8, b + 10, 5 * g, f, f);
-        d = 0.1;
-        for (c = 0; 11 > c; c++) nh(b + c, null,
-            d, 0, 0);
-        150 < ze[a] && id(a--)
-    } else if (z[a] == nd)
-        if (0 == ye[b]) {
-            for (c = 0; c < gd; c++)
-                if (!(y[b].x + 8 < y[c * hd].x || y[c * hd].x < y[b].x - 4 || y[b].y + 8 < y[c * hd].y || y[c * hd].y < y[b].y - 4))
-                    if (z[c] == jd || z[c] == ld) {
-                        for (g = 0; g < gd; g++) z[g] == nd && ye[g * hd] == jd && (ye[g * hd] = 0);
-                        ye[b] = jd;
-                        kd[a] = kd[c]
-                    } else z[c] == md && (ye[b] = z[c], kd[a] = kd[c]);
-            for (c = 0; c < od; c++) 0 == A[c] || y[b].x + 8 < B[c].x || B[c].x < y[b].x - 4 || y[b].y + 8 < B[c].y || B[c].y < y[b].y - 4 || (ye[b] = Lb, kd[a] = A[c])
-        } else if (e = ~~y[b + 0].x, f = ~~y[b + 0].y, ye[b] == jd) {
-        if (customRandomBoolean(0.1)) {
-            d = Ec;
-            for (c = 0; c < gd; c++) z[c] == jd &&
-                (d = Fc);
-            createFighterPlayerClone(e, f, d, kd[a])
+function processPlayerMove(k) {
+    var tintB;
+    var b;
+    var j;
+    var i;
+    var s;
+    var v = new Vector;
+    var w = new Vector;
+    var character = new Vector;
+    b = k * hd;
+    if (z[k] == jd || z[k] == ld) {
+        var g = z[k] == jd ? 0 : 1;
+        var oldBanIsTemp = z[k] == jd ? Sd[37] : Sd[65] | Sd[97];
+        var oldBanIsPerm = z[k] == jd ? Sd[39] : Sd[68] | Sd[100];
+        var newBanIsRemoved = z[k] == jd ? Sd[38] : Sd[87] | Sd[119];
+        var $ = z[k] == jd ? Sd[40] : Sd[83] | Sd[115];
+        ze[k]++;
+        j = (stickManOldBodyPoints[b + 4].y << 9) + ~~stickManOldBodyPoints[b + 4].x;
+        i = (stickManOldBodyPoints[b + 5].y << 9) + ~~stickManOldBodyPoints[b + 5].x;
+        s = I[(~~stickManOldBodyPoints[b + 4].y + 0.5 + V[j] << 9) + floor(~~stickManOldBodyPoints[b + 4].x + 0.5 + U[j])] > l ? 1 : 0;
+        var Ca = I[(~~stickManOldBodyPoints[b + 5].y + 0.5 + V[i] << 9) + floor(~~stickManOldBodyPoints[b + 5].x + 0.5 + U[i])] > l ? 1 : 0;
+        if (0 == s) {
+            s = I[j] > l ? 1 : 0;
         }
-    } else ye[b] == md ? customRandomBoolean(0.01) && createFighterPlayerClone(e, f, fighterId, 0) : ye[b] == Lb && customRandomBoolean(0.01) && Ad(e + 2, f + 2, kd[a])
-}
+        if (0 == Ca) {
+            Ca = I[i] > l ? 1 : 0;
+        }
+        v.x = U[j] + U[i];
+        v.y = V[j] + V[i];
+        normalize2(v);
+        w.set(v);
+        character.set(v);
+        rotatePointAroundCenter90Degrees(w);
+        if ($ && kd[k] == xc) {
+            tintB = 0;
+            for (; 6 > tintB; tintB++) {
+                movePlayerJoints(b + tintB, character, 0.01, 0.997);
+            }
+        } else {
+            if (!($ && kd[k] == Wb)) {
+                movePlayerJoints(b + 0, character, -0.2, 0.995);
+                movePlayerJoints(b + 1, character, -0.1, 0.995);
+                movePlayerJoints(b + 2, character, 0, 0.995);
+                movePlayerJoints(b + 3, character, 0, 0.995);
+                movePlayerJoints(b + 4, character, 0.3, 0.995);
+                movePlayerJoints(b + 5, character, 0.3, 0.995);
+            }
+        }
+        ph(k, b, b + 6);
+        stickManBodyPoints[b].add(dh[k]);
+        vectorScale(dh[k], 0.5);
+        if (1 < eh[g]) {
+            eh[g]--;
+        } else {
+            if (0 < eh[g] && (1 == s || 1 == Ca)) {
+                eh[g]--;
+            }
+        }
+        if (0 == eh[g]) {
+            if (oldBanIsPerm) {
+                eh[g] = 15;
+                v.x = stickManBodyPoints[b + 5].x - stickManBodyPoints[b + 4].x;
+                v.y = stickManBodyPoints[b + 5].y - stickManBodyPoints[b + 4].y;
+                tintB = v.x * w.x + v.y * w.y;
+                if (0 < tintB) {
+                    stickManBodyPoints[b + 2].x += 3.2 * V[j] + 3 * -U[j] * 0.8;
+                    stickManBodyPoints[b + 2].y += 3.2 * -U[j] + 3 * -V[j] * 0.8;
+                } else {
+                    stickManBodyPoints[b + 3].x += 3.2 * V[i] + 3 * -U[i] * 0.8;
+                    stickManBodyPoints[b + 3].y += 3.2 * -U[i] + 3 * -V[i] * 0.8;
+                }
+                gh[g] = 1;
+            } else {
+                if (oldBanIsTemp) {
+                    eh[g] = 15;
+                    v.x = stickManBodyPoints[b + 5].x - stickManBodyPoints[b + 4].x;
+                    v.y = stickManBodyPoints[b + 5].y - stickManBodyPoints[b + 4].y;
+                    tintB = v.x * w.x + v.y * w.y;
+                    if (0 > tintB) {
+                        stickManBodyPoints[b + 2].x += 3.2 * -V[j] + 3 * -U[j] * 0.8;
+                        stickManBodyPoints[b + 2].y += 3.2 * U[j] + 3 * -V[j] * 0.8;
+                    } else {
+                        stickManBodyPoints[b + 3].x += 3.2 * -V[i] + 3 * -U[i] * 0.8;
+                        stickManBodyPoints[b + 3].y += 3.2 * U[i] + 3 * -V[i] * 0.8;
+                    }
+                    gh[g] = 0;
+                }
+            }
+        } else {
+            if (oldBanIsTemp) {
+                v.x = stickManBodyPoints[b + 1].x - stickManOldBodyPoints[b + 1].x;
+                v.y = stickManBodyPoints[b + 1].y - stickManOldBodyPoints[b + 1].y;
+                tintB = v.x * w.x + v.y * w.y;
+                if (0 < tintB) {
+                    stickManBodyPoints[b + 1].x -= 0.2 * w.x;
+                    stickManBodyPoints[b + 1].y -= 0.2 * w.y;
+                }
+                gh[g] = 0;
+            } else {
+                if (oldBanIsPerm) {
+                    v.x = stickManBodyPoints[b + 1].x - stickManOldBodyPoints[b + 1].x;
+                    v.y = stickManBodyPoints[b + 1].y - stickManOldBodyPoints[b + 1].y;
+                    tintB = v.x * w.x + v.y * w.y;
+                    if (0 > tintB) {
+                        stickManBodyPoints[b + 1].x += 0.2 * w.x;
+                        stickManBodyPoints[b + 1].y += 0.2 * w.y;
+                    }
+                    gh[g] = 1;
+                }
+            }
+        }
+        if (1 < fh[g]) {
+            fh[g]--;
+        }
+        if (0 < fh[g] && (1 == s || 1 == Ca)) {
+            fh[g]--;
+        }
+        if (0 == fh[g] && newBanIsRemoved) {
+            fh[g] = 50;
+            stickManBodyPoints[b + 4].x -= 6 * character.x;
+            stickManBodyPoints[b + 4].y -= 6 * character.y;
+            stickManBodyPoints[b + 5].x -= 6 * character.x;
+            stickManBodyPoints[b + 5].y -= 6 * character.y;
+        }
+        if (!($ && kd[k] == Wb)) {
+            j = 0.5;
+            constraintJoints(b + 0, b + 1, 4, j, j);
+            constraintJoints(b + 1, b + 2, 4, j, j);
+            constraintJoints(b + 1, b + 3, 4, j, j);
+            constraintJoints(b + 2, b + 4, 5, j, j);
+            constraintJoints(b + 3, b + 5, 5, j, j);
+            constraintJoints(b + 2, b + 3, 5, 0.1, 0.1);
+        }
+        j = 0.1;
+        tintB = 0;
+        for (; 4 > tintB; tintB++) {
+            nh(b + tintB, character, j, 1, 0 < Ae[k] ? 1 : 0);
+        }
+        tintB = 4;
+        for (; 6 > tintB; tintB++) {
+            nh(b + tintB, character, j, 0, 0 < Ae[k] ? 1 : 0);
+        }
+        if (!$) {
+            s = -1;
+            for (; 2 > s; s++) {
+                i = -1;
+                for (; 2 > i; i++) {
+                    j = I[(stickManOldBodyPoints[b + 0].y + s << 9) + (~~stickManOldBodyPoints[b + 0].x + i)];
+                    if (1 == kh[D[j]]) {
+                        kd[k] = D[j];
+                    }
+                }
+            }
+        }
+        if (!(newBanIsRemoved && (oldBanIsTemp || oldBanIsPerm) || !$ || 0 == kd[k])) {
+            i = ~~stickManBodyPoints[b + 0].x;
+            s = ~~stickManBodyPoints[b + 0].y;
+            if (kd[k] == jc) {
+                i = i + (w.x * (0 == gh[g] ? 0 : -0) + 8 * character.x);
+                s = s + (w.y * (0 == gh[g] ? 0 : -0) + 8 * character.y);
+                stickManBodyPoints[b + 0].x += w.x * (0 == gh[g] ? -0.5 : 0.5) + -1 * character.x;
+                stickManBodyPoints[b + 0].y += w.y * (0 == gh[g] ? -0.5 : 0.5) + -1 * character.y;
+            }
+            i = minInsideRange(i, 8, 503);
+            s = minInsideRange(s, 8, 287);
+            if (kd[k] == Nb) {
+                j = (s >> 2 << 7) + (i >> 2);
+                if (0 == x[j]) {
+                    P[j] += w.x * (0 == gh[g] ? -1 : 1);
+                    Q[j] += w.y * (0 == gh[g] ? -1 : 1);
+                }
+            } else {
+                if (kd[k] != Wb && kd[k] != xc && I[s * screenWidth + i] == Jb) {
+                    j = Bd(i, s, kd[k], 0);
+                    if (0 <= j) {
+                        if (kd[k] == r) {
+                            J[j].x = w.x * (0 == gh[g] ? -7 : 7) + 2.4 * character.x;
+                            J[j].y = w.y * (0 == gh[g] ? -7 : 7) + 2.4 * character.y;
+                            G[j] = 2;
+                        } else {
+                            if (kd[k] == Yb) {
+                                J[j].x = w.x * (0 == gh[g] ? -20 : 20) + 20 * character.x;
+                                J[j].y = w.y * (0 == gh[g] ? -20 : 20) + 20 * character.y;
+                            } else {
+                                if (kd[k] == jc) {
+                                    J[j].x = w.x * (0 == gh[g] ? 20 : -20);
+                                    J[j].y = w.y * (0 == gh[g] ? 20 : -20);
+                                } else {
+                                    if (kd[k] == oc) {
+                                        G[j] = 0 == gh[g] ? (floor(4 * -getAngle(character) / TWOPI - 0.5) & 3) << 12 : (floor(4 * -getAngle(character) / TWOPI - 2.5) & 3) << 12;
+                                    } else {
+                                        if (kd[k] == rc) {
+                                            G[j] = 0 == gh[g] ? (floor(8 * getAngle(character) / TWOPI + 6.5) & 7) + 1 : (floor(8 * getAngle(character) / TWOPI + 2.5) & 7) + 1;
+                                        } else {
+                                            J[j].x = w.x * (0 == gh[g] ? -20 : 20) + customRandomBetween(-1, 1);
+                                            J[j].y = w.y * (0 == gh[g] ? -20 : 20) + customRandomBetween(-1, 1);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (1 == xa) {
+            w = 4;
+            for (; 5 >= w; w++) {
+                if (s = i = 0, 8 > stickManBodyPoints[b + w].x ? (i = 502, s = ~~stickManOldBodyPoints[b + w].y) : 504 <= stickManBodyPoints[b + w].x ? (i = 10, s = ~~stickManOldBodyPoints[b + w].y) : 8 > stickManBodyPoints[b + w].y ? (i = ~~stickManOldBodyPoints[b + w].x, s = 286) : 288 <= stickManBodyPoints[b + w].y && (i = ~~stickManOldBodyPoints[b + w].x, s = 10), 0 != i + s) {
+                    if (j = (s << 9) + i, I[j] <= l || 2 == X[D[I[j]]]) {
+                        mg(1, k);
+                        vectorSub(v, stickManBodyPoints[b + w], stickManOldBodyPoints[b + w]);
+                        normalize(v);
+                        tintB = 0;
+                        for (; 5 >= tintB; tintB++) {
+                            stickManBodyPoints[b + tintB].x = i + v.x + customRandomBetween(-0.1, 0.1);
+                            stickManBodyPoints[b + tintB].y = s + v.y + customRandomBetween(-0.1, 0.1);
+                            setToVector(stickManOldBodyPoints[b + tintB], i, s);
+                            ye[b + tintB] = 0;
+                        }
+                        break;
+                    } else {
+                        stickManBodyPoints[b + w].set(stickManOldBodyPoints[b + w]);
+                        ye[b + w] = Ob;
+                        if (0 < fh[g]) {
+                            fh[g]--;
+                        }
+                        if (0 < eh[g]) {
+                            eh[g]--;
+                        }
+                    }
+                }
+            }
+        } else {
+            if (-5 == oh(b, b + 6)) {
+                z[k] = 0 == g ? jd + 2 : ld + 2;
+            }
+        }
+        if (0 < playerDamageState[g]) {
+            playerDamageState[g]--;
+        }
+        b = oh(b, b + 6);
+        if (0 > b) {
+            playerHealth[g] += b;
+            playerDamageState[g] = 25;
+        }
+        if (0 >= playerHealth[g]) {
+            z[k] = 0 == g ? jd + 2 : ld + 2;
+        }
+    } else {
+        if (z[k] == jd + 2 || z[k] == ld + 2) {
+            stickManBodyPoints[b + 10].set(stickManBodyPoints[b + 5]);
+            stickManOldBodyPoints[b + 10].set(stickManOldBodyPoints[b + 5]);
+            stickManBodyPoints[b + 9].set(stickManBodyPoints[b + 4]);
+            stickManOldBodyPoints[b + 9].set(stickManOldBodyPoints[b + 4]);
+            stickManBodyPoints[b + 8].set(stickManBodyPoints[b + 3]);
+            stickManOldBodyPoints[b + 8].set(stickManOldBodyPoints[b + 3]);
+            stickManBodyPoints[b + 7].set(stickManBodyPoints[b + 3]);
+            stickManOldBodyPoints[b + 7].set(stickManOldBodyPoints[b + 3]);
+            stickManBodyPoints[b + 6].set(stickManBodyPoints[b + 2]);
+            stickManOldBodyPoints[b + 6].set(stickManOldBodyPoints[b + 2]);
+            stickManBodyPoints[b + 5].set(stickManBodyPoints[b + 2]);
+            stickManOldBodyPoints[b + 5].set(stickManOldBodyPoints[b + 2]);
+            stickManBodyPoints[b + 4].set(stickManBodyPoints[b + 1]);
+            stickManOldBodyPoints[b + 4].set(stickManOldBodyPoints[b + 1]);
+            stickManBodyPoints[b + 3].set(stickManBodyPoints[b + 1]);
+            stickManOldBodyPoints[b + 3].set(stickManOldBodyPoints[b + 1]);
+            stickManBodyPoints[b + 2].set(stickManBodyPoints[b + 1]);
+            stickManOldBodyPoints[b + 2].set(stickManOldBodyPoints[b + 1]);
+            stickManBodyPoints[b + 1].set(stickManBodyPoints[b + 0]);
+            stickManOldBodyPoints[b + 1].set(stickManOldBodyPoints[b + 0]);
+            stickManBodyPoints[b + 0].set(stickManBodyPoints[b + 0]);
+            stickManOldBodyPoints[b + 0].set(stickManOldBodyPoints[b + 0]);
+            dh[k].y -= 1;
+            ze[k] = 0;
+            z[k]++;
+        } else {
+            if (z[k] == jd + 3 || z[k] == ld + 3) {
+                ze[k]++;
+                tintB = 0;
+                for (; 11 > tintB; tintB++) {
+                    movePlayerJoints(b + tintB, null, 0.1, 0.999);
+                    stickManBodyPoints[b + tintB].add(dh[k]);
+                }
+                vectorScale(dh[k], 0.5);
+                j = 0.5;
+                g = (150 - ze[k]) / 150;
+                constraintJoints(b + 1, b + 2, 4 * g, j, j);
+                constraintJoints(b + 3, b + 5, 4 * g, j, j);
+                constraintJoints(b + 4, b + 7, 4 * g, j, j);
+                constraintJoints(b + 6, b + 9, 5 * g, j, j);
+                constraintJoints(b + 8, b + 10, 5 * g, j, j);
+                j = 0.1;
+                tintB = 0;
+                for (; 11 > tintB; tintB++) {
+                    nh(b + tintB, null, j, 0, 0);
+                }
+                if (150 < ze[k]) {
+                    id(k--);
+                }
+            }
+        }
+    }
+};
+
+function processFighterMove(k) {
+    var i;
+    var index;
+    var j;
+    var c;
+    var b;
+    var a = new Vector;
+    b = new Vector;
+    c = new Vector;
+    index = k * hd;
+    if (z[k] == md || z[k] == md + 1) {
+        ze[k]++;
+        j = (stickManOldBodyPoints[index + 4].y << 9) + ~~stickManOldBodyPoints[index + 4].x;
+        i = (stickManOldBodyPoints[index + 5].y << 9) + ~~stickManOldBodyPoints[index + 5].x;
+        a.x = U[j] + U[i];
+        a.y = V[j] + V[i];
+        normalize2(a);
+        b.set(a);
+        c.set(a);
+        rotatePointAroundCenter90Degrees(b);
+        if (z[k] == md) {
+            movePlayerJoints(index + 0, c, -0.2, 0.995);
+            movePlayerJoints(index + 1, c, -0.1, 0.995);
+            movePlayerJoints(index + 2, c, 0, 0.995);
+            movePlayerJoints(index + 3, c, 0, 0.995);
+            movePlayerJoints(index + 4, c, 0.3, 0.995);
+            movePlayerJoints(index + 5, c, 0.3, 0.995);
+        } else {
+            movePlayerJoints(index + 0, c, 0.1, 0.995);
+            movePlayerJoints(index + 1, c, 0.1, 0.995);
+            movePlayerJoints(index + 2, c, 0.1, 0.995);
+            movePlayerJoints(index + 3, c, 0.1, 0.995);
+            movePlayerJoints(index + 4, c, 0.1, 0.995);
+            movePlayerJoints(index + 5, c, 0.1, 0.995);
+        }
+        ph(k, index, index + 6);
+        stickManBodyPoints[index].add(dh[k]);
+        vectorScale(dh[k], 0.5);
+        if (z[k] == md) {
+            a.x = stickManBodyPoints[index + 5].x - stickManBodyPoints[index + 4].x;
+            a.y = stickManBodyPoints[index + 5].y - stickManBodyPoints[index + 4].y;
+            b = a.x * b.x + a.y * b.y;
+            if (0 != ye[index + 4] && 0 != ye[index + 5]) {
+                var r = customRandom(100);
+                if (5 > r) {
+                    if (0 < b) {
+                        stickManBodyPoints[index + 4].x += 4 * V[j] + 4 * -U[j];
+                        stickManBodyPoints[index + 4].y += 4 * -U[j] + 4 * -V[j];
+                    } else {
+                        stickManBodyPoints[index + 5].x += 4 * V[i] + 4 * -U[i];
+                        stickManBodyPoints[index + 5].y += 4 * -U[i] + 4 * -V[i];
+                    }
+                } else {
+                    if (10 > r) {
+                        if (0 > b) {
+                            stickManBodyPoints[index + 4].x += 4 * -V[j] + 4 * -U[j];
+                            stickManBodyPoints[index + 4].y += 4 * U[j] + 4 * -V[j];
+                        } else {
+                            stickManBodyPoints[index + 5].x += 4 * -V[i] + 4 * -U[i];
+                            stickManBodyPoints[index + 5].y += 4 * U[i] + 4 * -V[i];
+                        }
+                    }
+                }
+            } else {
+                if (0 != ye[index + 4]) {
+                    if (customRandomBoolean(0.02)) {
+                        b = customRandomBetween(-4, 4);
+                        stickManBodyPoints[index + 4].x += V[j] * b + 4 * -U[j];
+                        stickManBodyPoints[index + 4].y += -U[j] * b + 4 * -V[j];
+                    }
+                } else {
+                    if (0 != ye[index + 5] && customRandomBoolean(0.02)) {
+                        b = customRandomBetween(-4, 4);
+                        stickManBodyPoints[index + 5].x += V[i] * b + 4 * -U[i];
+                        stickManBodyPoints[index + 5].y += -U[i] * b + 4 * -V[i];
+                    }
+                }
+            }
+            i = 0;
+            for (; i < counterStickman; i++) {
+                if (!(k == i || z[i] != md && z[i] != md + 1 && z[i] != jd && z[i] != ld)) {
+                    j = i * hd;
+                    b = abs(stickManBodyPoints[index + 4].x - stickManBodyPoints[j].x);
+                    r = abs(stickManBodyPoints[index + 4].y - stickManBodyPoints[j].y);
+                    if (4 >= b && 4 >= r) {
+                        dh[i].x += 1 * (stickManBodyPoints[index + 4].x - stickManOldBodyPoints[index + 4].x);
+                        dh[i].y += 2 * (stickManBodyPoints[index + 4].y - stickManOldBodyPoints[index + 4].y);
+                        if (z[i] == md) {
+                            z[i] = md + 1;
+                        }
+                        ze[i] = 0;
+                        if (z[i] == jd) {
+                            playerHealth[0] -= 8;
+                            playerDamageState[0] = 25;
+                        }
+                        if (z[i] == ld) {
+                            playerHealth[1] -= 8;
+                            playerDamageState[1] = 25;
+                        }
+                    }
+                    b = abs(stickManBodyPoints[index + 5].x - stickManBodyPoints[j].x);
+                    r = abs(stickManBodyPoints[index + 5].y - stickManBodyPoints[j].y);
+                    if (4 >= b && 4 >= r) {
+                        dh[i].x += 1 * (stickManBodyPoints[index + 5].x - stickManOldBodyPoints[index + 5].x);
+                        dh[i].y += 2 * (stickManBodyPoints[index + 5].y - stickManOldBodyPoints[index + 5].y);
+                        if (z[i] == md) {
+                            z[i] = md + 1;
+                        }
+                        ze[i] = 0;
+                        if (z[i] == jd) {
+                            playerHealth[0] -= 8;
+                            playerDamageState[0] = 25;
+                        }
+                        if (z[i] == ld) {
+                            playerHealth[1] -= 8;
+                            playerDamageState[1] = 25;
+                        }
+                    }
+                }
+            }
+        } else {
+            if (10 < ze[k] && (0 != ye[index + 4] || 0 != ye[index + 5]) && customRandomBoolean(0.1)) {
+                z[k] = md;
+                ze[k] = 0;
+            }
+        }
+        b = 0.5;
+        constraintJoints(index + 0, index + 1, 4, b, b);
+        constraintJoints(index + 1, index + 2, 4, b, b);
+        constraintJoints(index + 1, index + 3, 4, b, b);
+        constraintJoints(index + 2, index + 4, 5, b, b);
+        constraintJoints(index + 3, index + 5, 5, b, b);
+        constraintJoints(index + 2, index + 3, 5, 0.1, 0.1);
+        j = 0.1;
+        i = 0;
+        for (; 4 > i; i++) {
+            nh(index + i, c, j, 1, 0 < Ae[k] ? 1 : 0);
+        }
+        i = 4;
+        for (; 6 > i; i++) {
+            nh(index + i, c, j, 0, 0 < Ae[k] ? 1 : 0);
+        }
+        if (z[k] == md) {
+            if (0 != oh(index, index + 6)) {
+                ze[k] = 0;
+            } else {
+                if (50 < ze[k]) {
+                    z[k] = md + 1;
+                }
+            }
+        }
+        if (1 == xa) {
+            i = 4;
+            for (; 5 >= i; i++) {
+                if (b = c = 0, 8 > stickManBodyPoints[index + i].x ? (c = 502, b = ~~stickManOldBodyPoints[index + i].y) : 504 <= stickManBodyPoints[index + i].x ? (c = 10, b = ~~stickManOldBodyPoints[index + i].y) : 8 > stickManBodyPoints[index + i].y ? (c = ~~stickManOldBodyPoints[index + i].x, b = 286) : 288 <= stickManBodyPoints[index + i].y && (c = ~~stickManOldBodyPoints[index + i].x, b = 10), 0 != c + b) {
+                    if (j = (b << 9) + c, I[j] <= l || 2 == X[D[I[j]]]) {
+                        mg(1, k);
+                        vectorSub(a, stickManBodyPoints[index + i], stickManOldBodyPoints[index + i]);
+                        normalize(a);
+                        i = 0;
+                        for (; 5 >= i; i++) {
+                            stickManBodyPoints[index + i].x = c + a.x + customRandomBetween(-0.1, 0.1);
+                            stickManBodyPoints[index + i].y = b + a.y + customRandomBetween(-0.1, 0.1);
+                            setToVector(stickManOldBodyPoints[index + i], c, b);
+                            ye[index + i] = 0;
+                        }
+                        break;
+                    } else {
+                        stickManBodyPoints[index + i].set(stickManOldBodyPoints[index + i]);
+                        ye[index + i] = Ob;
+                    }
+                }
+            }
+        } else {
+            if (-5 == oh(index, index + 6)) {
+                z[k] = md + 2;
+            }
+        }
+        if (0 > oh(index, index + 6)) {
+            z[k] = md + 2;
+        }
+    } else {
+        if (z[k] == md + 2) {
+            stickManBodyPoints[index + 10].set(stickManBodyPoints[index + 5]);
+            stickManOldBodyPoints[index + 10].set(stickManOldBodyPoints[index + 5]);
+            stickManBodyPoints[index + 9].set(stickManBodyPoints[index + 4]);
+            stickManOldBodyPoints[index + 9].set(stickManOldBodyPoints[index + 4]);
+            stickManBodyPoints[index + 8].set(stickManBodyPoints[index + 3]);
+            stickManOldBodyPoints[index + 8].set(stickManOldBodyPoints[index + 3]);
+            stickManBodyPoints[index + 7].set(stickManBodyPoints[index + 3]);
+            stickManOldBodyPoints[index + 7].set(stickManOldBodyPoints[index + 3]);
+            stickManBodyPoints[index + 6].set(stickManBodyPoints[index + 2]);
+            stickManOldBodyPoints[index + 6].set(stickManOldBodyPoints[index + 2]);
+            stickManBodyPoints[index + 5].set(stickManBodyPoints[index + 2]);
+            stickManOldBodyPoints[index + 5].set(stickManOldBodyPoints[index + 2]);
+            stickManBodyPoints[index + 4].set(stickManBodyPoints[index + 1]);
+            stickManOldBodyPoints[index + 4].set(stickManOldBodyPoints[index + 1]);
+            stickManBodyPoints[index + 3].set(stickManBodyPoints[index + 1]);
+            stickManOldBodyPoints[index + 3].set(stickManOldBodyPoints[index + 1]);
+            stickManBodyPoints[index + 2].set(stickManBodyPoints[index + 1]);
+            stickManOldBodyPoints[index + 2].set(stickManOldBodyPoints[index + 1]);
+            stickManBodyPoints[index + 1].set(stickManBodyPoints[index + 0]);
+            stickManOldBodyPoints[index + 1].set(stickManOldBodyPoints[index + 0]);
+            stickManBodyPoints[index + 0].set(stickManBodyPoints[index + 0]);
+            stickManOldBodyPoints[index + 0].set(stickManOldBodyPoints[index + 0]);
+            dh[k].y -= 1;
+            ze[k] = 0;
+            z[k] = md + 3;
+        } else {
+            if (z[k] == md + 3) {
+                ze[k]++;
+                i = 0;
+                for (; 11 > i; i++) {
+                    movePlayerJoints(index + i, null, 0.1, 0.999);
+                    stickManBodyPoints[index + i].add(dh[k]);
+                }
+                vectorScale(dh[k], 0.5);
+                b = 0.5;
+                a = (150 - ze[k]) / 150;
+                constraintJoints(index + 1, index + 2, 4 * a, b, b);
+                constraintJoints(index + 3, index + 5, 4 * a, b, b);
+                constraintJoints(index + 4, index + 7, 4 * a, b, b);
+                constraintJoints(index + 6, index + 9, 5 * a, b, b);
+                constraintJoints(index + 8, index + 10, 5 * a, b, b);
+                j = 0.1;
+                i = 0;
+                for (; 11 > i; i++) {
+                    nh(index + i, null, j, 0, 0);
+                }
+                if (150 < ze[k]) {
+                    id(k--);
+                }
+            } else {
+                if (z[k] == nd) {
+                    if (0 == ye[index]) {
+                        i = 0;
+                        for (; i < counterStickman; i++) {
+                            if (!(stickManBodyPoints[index].x + 8 < stickManBodyPoints[i * hd].x || stickManBodyPoints[i * hd].x < stickManBodyPoints[index].x - 4 || stickManBodyPoints[index].y + 8 < stickManBodyPoints[i * hd].y || stickManBodyPoints[i * hd].y < stickManBodyPoints[index].y - 4)) {
+                                if (z[i] == jd || z[i] == ld) {
+                                    a = 0;
+                                    for (; a < counterStickman; a++) {
+                                        if (z[a] == nd && ye[a * hd] == jd) {
+                                            ye[a * hd] = 0;
+                                        }
+                                    }
+                                    ye[index] = jd;
+                                    kd[k] = kd[i];
+                                } else {
+                                    if (z[i] == md) {
+                                        ye[index] = z[i];
+                                        kd[k] = kd[i];
+                                    }
+                                }
+                            }
+                        }
+                        i = 0;
+                        for (; i < od; i++) {
+                            if (!(0 == A[i] || stickManBodyPoints[index].x + 8 < B[i].x || B[i].x < stickManBodyPoints[index].x - 4 || stickManBodyPoints[index].y + 8 < B[i].y || B[i].y < stickManBodyPoints[index].y - 4)) {
+                                ye[index] = Lb;
+                                kd[k] = A[i];
+                            }
+                        }
+                    } else {
+                        if (c = ~~stickManBodyPoints[index + 0].x, b = ~~stickManBodyPoints[index + 0].y, ye[index] == jd) {
+                            if (customRandomBoolean(0.1)) {
+                                j = Ec;
+                                i = 0;
+                                for (; i < counterStickman; i++) {
+                                    if (z[i] == jd) {
+                                        j = Fc;
+                                    }
+                                }
+                                createFighterPlayerClone(c, b, j, kd[k]);
+                            }
+                        } else {
+                            if (ye[index] == md) {
+                                if (customRandomBoolean(0.01)) {
+                                    createFighterPlayerClone(c, b, fighterId, 0);
+                                }
+                            } else {
+                                if (ye[index] == Lb && customRandomBoolean(0.01)) {
+                                    Ad(c + 2, b + 2, kd[k]);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+};
 
 
 function Uf() {
@@ -3149,18 +3707,18 @@ function Uf() {
         F = 52224,
         M = 10027008;
     14 == backgroundDrawType && (F = u = t = 0, M = 13421772);
-    for (b = a = 0; a < gd; a++, b += hd) {
+    for (b = a = 0; a < counterStickman; a++, b += hd) {
         if (z[a] <= ld + 3) {
-            if (z[a] != jd + 3 && z[a] != ld + 3) lf(y[b + 1].x, y[b + 1].y, y[b + 2].x, y[b + 2].y, u), lf(y[b + 1].x, y[b + 1].y, y[b + 3].x, y[b + 3].y, u), lf(y[b + 2].x, y[b + 2].y, y[b + 4].x, y[b + 4].y, u), lf(y[b +
-                3].x, y[b + 3].y, y[b + 5].x, y[b + 5].y, u), e = z[a] <= jd + 3 ? f : g;
+            if (z[a] != jd + 3 && z[a] != ld + 3) lf(stickManBodyPoints[b + 1].x, stickManBodyPoints[b + 1].y, stickManBodyPoints[b + 2].x, stickManBodyPoints[b + 2].y, u), lf(stickManBodyPoints[b + 1].x, stickManBodyPoints[b + 1].y, stickManBodyPoints[b + 3].x, stickManBodyPoints[b + 3].y, u), lf(stickManBodyPoints[b + 2].x, stickManBodyPoints[b + 2].y, stickManBodyPoints[b + 4].x, stickManBodyPoints[b + 4].y, u), lf(stickManBodyPoints[b +
+                3].x, stickManBodyPoints[b + 3].y, stickManBodyPoints[b + 5].x, stickManBodyPoints[b + 5].y, u), e = z[a] <= jd + 3 ? f : g;
             else {
-                lf(y[b + 3].x, y[b + 3].y, y[b + 5].x, y[b + 5].y, u);
+                lf(stickManBodyPoints[b + 3].x, stickManBodyPoints[b + 3].y, stickManBodyPoints[b + 5].x, stickManBodyPoints[b + 5].y, u);
                 if (140 < ze[a]) continue;
-                lf(y[b + 4].x, y[b + 4].y, y[b + 7].x, y[b + 7].y, u);
+                lf(stickManBodyPoints[b + 4].x, stickManBodyPoints[b + 4].y, stickManBodyPoints[b + 7].x, stickManBodyPoints[b + 7].y, u);
                 if (135 < ze[a]) continue;
-                lf(y[b + 6].x, y[b + 6].y, y[b + 9].x, y[b + 9].y, u);
+                lf(stickManBodyPoints[b + 6].x, stickManBodyPoints[b + 6].y, stickManBodyPoints[b + 9].x, stickManBodyPoints[b + 9].y, u);
                 if (130 < ze[a]) continue;
-                lf(y[b + 8].x, y[b + 8].y, y[b + 10].x, y[b + 10].y, u);
+                lf(stickManBodyPoints[b + 8].x, stickManBodyPoints[b + 8].y, stickManBodyPoints[b + 10].x, stickManBodyPoints[b + 10].y, u);
                 if (125 < ze[a]) continue;
                 e = z[a] <= jd + 3 ? m : n
             }
@@ -3168,35 +3726,35 @@ function Uf() {
             14 == backgroundDrawType && (d = 0);
             var $ = 0,
                 Ca = 0;
-            z[a] == jd && ($ = hh[0], Ca = ih[0]);
-            z[a] == ld && ($ = hh[1], Ca = ih[1]);
+            z[a] == jd && ($ = playerHealth[0], Ca = playerDamageState[0]);
+            z[a] == ld && ($ = playerHealth[1], Ca = playerDamageState[1]);
             var Pb = e.length;
             for (c = 0; c < Pb; c++) {
-                var $b = (y[b].y << 9) + ~~y[b].x +
+                var $b = (stickManBodyPoints[b].y << 9) + ~~stickManBodyPoints[b].x +
                     e[c];
                 ve[$b] && (v[$b] = 0 < Ca ? Pb - floor($ * Pb / 48) <= c ? F : M : v[$b] == d ? 0 : d)
             }
             if (12 == backgroundDrawType)
-                for (c = floor(minInsideRange(y[b + 0].x, 8, 503)), $ = floor(minInsideRange(y[b + 0].y, 8, 283)), e = $ - 4; e <= $ + 4; e += 4)
+                for (c = floor(minInsideRange(stickManBodyPoints[b + 0].x, 8, 503)), $ = floor(minInsideRange(stickManBodyPoints[b + 0].y, 8, 283)), e = $ - 4; e <= $ + 4; e += 4)
                     for (d = c - 4; d <= c + 4; d += 4) Eb[(e << 9) + d] = 536870911
-        } else if (z[a] <= md + 2) lf(y[b + 0].x, y[b + 0].y, y[b + 1].x, y[b + 1].y, t), lf(y[b + 1].x, y[b + 1].y, y[b + 2].x, y[b + 2].y, u), lf(y[b + 1].x, y[b + 1].y, y[b + 3].x, y[b + 3].y, u), lf(y[b + 2].x, y[b + 2].y, y[b + 4].x, y[b + 4].y, u), lf(y[b + 3].x, y[b + 3].y, y[b + 5].x, y[b + 5].y, u), oe(y[b + 0].x - 1, y[b + 0].y - 1, 3, 3, t);
+        } else if (z[a] <= md + 2) lf(stickManBodyPoints[b + 0].x, stickManBodyPoints[b + 0].y, stickManBodyPoints[b + 1].x, stickManBodyPoints[b + 1].y, t), lf(stickManBodyPoints[b + 1].x, stickManBodyPoints[b + 1].y, stickManBodyPoints[b + 2].x, stickManBodyPoints[b + 2].y, u), lf(stickManBodyPoints[b + 1].x, stickManBodyPoints[b + 1].y, stickManBodyPoints[b + 3].x, stickManBodyPoints[b + 3].y, u), lf(stickManBodyPoints[b + 2].x, stickManBodyPoints[b + 2].y, stickManBodyPoints[b + 4].x, stickManBodyPoints[b + 4].y, u), lf(stickManBodyPoints[b + 3].x, stickManBodyPoints[b + 3].y, stickManBodyPoints[b + 5].x, stickManBodyPoints[b + 5].y, u), oe(stickManBodyPoints[b + 0].x - 1, stickManBodyPoints[b + 0].y - 1, 3, 3, t);
         else if (z[a] <= md + 3) {
-            lf(y[b + 1].x, y[b + 1].y, y[b + 2].x, y[b + 2].y,
+            lf(stickManBodyPoints[b + 1].x, stickManBodyPoints[b + 1].y, stickManBodyPoints[b + 2].x, stickManBodyPoints[b + 2].y,
                 u);
             if (145 < ze[a]) continue;
-            lf(y[b + 3].x, y[b + 3].y, y[b + 5].x, y[b + 5].y, u);
+            lf(stickManBodyPoints[b + 3].x, stickManBodyPoints[b + 3].y, stickManBodyPoints[b + 5].x, stickManBodyPoints[b + 5].y, u);
             if (140 < ze[a]) continue;
-            lf(y[b + 4].x, y[b + 4].y, y[b + 7].x, y[b + 7].y, u);
+            lf(stickManBodyPoints[b + 4].x, stickManBodyPoints[b + 4].y, stickManBodyPoints[b + 7].x, stickManBodyPoints[b + 7].y, u);
             if (135 < ze[a]) continue;
-            lf(y[b + 6].x, y[b + 6].y, y[b + 9].x, y[b + 9].y, u);
+            lf(stickManBodyPoints[b + 6].x, stickManBodyPoints[b + 6].y, stickManBodyPoints[b + 9].x, stickManBodyPoints[b + 9].y, u);
             if (130 < ze[a]) continue;
-            lf(y[b + 8].x, y[b + 8].y, y[b + 10].x, y[b + 10].y, u);
+            lf(stickManBodyPoints[b + 8].x, stickManBodyPoints[b + 8].y, stickManBodyPoints[b + 10].x, stickManBodyPoints[b + 10].y, u);
             if (125 < ze[a]) continue;
-            oe(y[b + 0].x - 1, y[b + 0].y - 1, 2, 2, t)
-        } else z[a] <= nd && (d = 9465872, 14 == backgroundDrawType && (d = 0), ye[b] == jd ? (lf(y[b].x, y[b].y, y[b].x, y[b].y + 3, d), lf(y[b].x, y[b].y, y[b].x + 2, y[b].y, d), lf(y[b].x, y[b].y + 2, y[b].x + 2, y[b].y + 2, d), lf(y[b].x + 3, y[b].y, y[b].x +
-            3, y[b].y + 2, d)) : ye[b] == md ? (lf(y[b].x, y[b].y, y[b].x, y[b].y + 3, d), lf(y[b].x, y[b].y, y[b].x + 3, y[b].y, d), lf(y[b].x, y[b].y + 2, y[b].x + 2, y[b].y + 2, d)) : ye[b] == Lb ? (lf(y[b].x + 1, y[b].y, y[b].x + 2, y[b].y, d), lf(y[b].x, y[b].y + 1, y[b].x, y[b].y + 2, d), lf(y[b].x + 3, y[b].y + 1, y[b].x + 3, y[b].y + 2, d), lf(y[b].x + 1, y[b].y + 3, y[b].x + 2, y[b].y + 3, d)) : oe(y[b].x, y[b].y, 4, 4, d));
+            oe(stickManBodyPoints[b + 0].x - 1, stickManBodyPoints[b + 0].y - 1, 2, 2, t)
+        } else z[a] <= nd && (d = 9465872, 14 == backgroundDrawType && (d = 0), ye[b] == jd ? (lf(stickManBodyPoints[b].x, stickManBodyPoints[b].y, stickManBodyPoints[b].x, stickManBodyPoints[b].y + 3, d), lf(stickManBodyPoints[b].x, stickManBodyPoints[b].y, stickManBodyPoints[b].x + 2, stickManBodyPoints[b].y, d), lf(stickManBodyPoints[b].x, stickManBodyPoints[b].y + 2, stickManBodyPoints[b].x + 2, stickManBodyPoints[b].y + 2, d), lf(stickManBodyPoints[b].x + 3, stickManBodyPoints[b].y, stickManBodyPoints[b].x +
+            3, stickManBodyPoints[b].y + 2, d)) : ye[b] == md ? (lf(stickManBodyPoints[b].x, stickManBodyPoints[b].y, stickManBodyPoints[b].x, stickManBodyPoints[b].y + 3, d), lf(stickManBodyPoints[b].x, stickManBodyPoints[b].y, stickManBodyPoints[b].x + 3, stickManBodyPoints[b].y, d), lf(stickManBodyPoints[b].x, stickManBodyPoints[b].y + 2, stickManBodyPoints[b].x + 2, stickManBodyPoints[b].y + 2, d)) : ye[b] == Lb ? (lf(stickManBodyPoints[b].x + 1, stickManBodyPoints[b].y, stickManBodyPoints[b].x + 2, stickManBodyPoints[b].y, d), lf(stickManBodyPoints[b].x, stickManBodyPoints[b].y + 1, stickManBodyPoints[b].x, stickManBodyPoints[b].y + 2, d), lf(stickManBodyPoints[b].x + 3, stickManBodyPoints[b].y + 1, stickManBodyPoints[b].x + 3, stickManBodyPoints[b].y + 2, d), lf(stickManBodyPoints[b].x + 1, stickManBodyPoints[b].y + 3, stickManBodyPoints[b].x + 2, stickManBodyPoints[b].y + 3, d)) : oe(stickManBodyPoints[b].x, stickManBodyPoints[b].y, 4, 4, d));
         if (z[a] <= md + 3 && 13 == backgroundDrawType)
-            for (c = 0; 6 > c; c++) d = floor(minInsideRange(y[b + c].x, 8, 503)), e = floor(minInsideRange(y[b + c].y, 8, 287)), Eb[(e << 9) + d] = 3E3
+            for (c = 0; 6 > c; c++) d = floor(minInsideRange(stickManBodyPoints[b + c].x, 8, 503)), e = floor(minInsideRange(stickManBodyPoints[b + c].y, 8, 287)), Eb[(e << 9) + d] = 3E3
     }
 }
 var od = 50,
@@ -3276,11 +3834,11 @@ function hf() {
                     }
                 } else 47 == ea && We || 47 == fa && Xe ? (W[n].x += 0.05 * (ia - B[n].x), W[n].y += 0.05 *
                     (ja - B[n].y), vectorScale(W[n], 0.9)) : Ce[n] = 0;
-                for (m = 0; m < gd; m++)
+                for (m = 0; m < counterStickman; m++)
                     if (z[m] == md || z[m] == md + 1 || z[m] == jd || z[m] == ld)
                         for (n = m * hd, t = 4; 5 >= t; t++) {
-                            var u = abs(y[n + t].y - B[a].y);
-                            9 >= abs(y[n + t].x - B[a].x) && 9 >= u && (W[a].x += 0.1 * (y[n + t].x - Y[n + t].x), W[a].y += 0.2 * (y[n + t].y - Y[n + t].y))
+                            var u = abs(stickManBodyPoints[n + t].y - B[a].y);
+                            9 >= abs(stickManBodyPoints[n + t].x - B[a].x) && 9 >= u && (W[a].x += 0.1 * (stickManBodyPoints[n + t].x - stickManOldBodyPoints[n + t].x), W[a].y += 0.2 * (stickManBodyPoints[n + t].y - stickManOldBodyPoints[n + t].y))
                         }
                 sh = n = 0;
                 for (var m = floor(vectorLength(W[a]) / 2) + 1, t = 1 / m, F, M, u = 0; u < m; u++) {
